@@ -12,24 +12,14 @@ namespace PortalStoque.API.Controllers
     {
         static readonly IOcorrenciaRepositorio ocorrenciaRepositorio = new OcorrenciaRepositorio();
 
-        public HttpResponseMessage GetAllOcorrencia(int pPagina, int pTamPag )
+        public HttpResponseMessage GetAllOcorrencia([FromUri]FilterOcorModel filter)
         {
             var pWhere = "";
 
-            List<Ocorrencia> listaOcorrencia = ocorrenciaRepositorio.GetAll(pPagina, pTamPag, pWhere).ToList();
+            List<Ocorrencia> listaOcorrencia = ocorrenciaRepositorio.GetAll(filter.Pagina, filter.TamPag, pWhere).ToList();
             var result = new { Tasks = listaOcorrencia, TotalOcor = ocorrenciaRepositorio.TotalOcorrencia(pWhere) };
 
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
-
-        public HttpResponseMessage GetFilterDefault([FromUri]FilterOcorModel defaultFilter)
-        {
-
-            List<Ocorrencia> listaOcorrencia = ocorrenciaRepositorio.GetAll(1,2, null).ToList();
-            var result = new { Tasks = listaOcorrencia, TotalOcor = ocorrenciaRepositorio.TotalOcorrencia(null) };
-
-            return Request.CreateResponse(HttpStatusCode.OK, result);
-        }
-
     }
 }
