@@ -8,24 +8,18 @@ using System.Web.Http;
 
 namespace PortalStoque.API.Controllers
 {
-    
+    [Authorize]
     public class UsuarioController : ApiController
     {
         static readonly IUserRepositorio _repositorio = new UserRepositorio();
 
-        [Route("api/GetUser")]
-        [HttpGet]
-        public Usuario GetUser(string pLogin, string pSenha)
+        [HttpPost]
+        [Route("GetUser")]
+        public HttpResponseMessage GetUser(Login login)
         {
-           return _repositorio.GetUsuario(pLogin, pSenha);
-        }
-
-        [Authorize(Roles = "Gestor")]
-        [Route("SoAdministrador")]
-        [HttpGet]
-        public string SoAdministrador()
-        {
-            return "Usuário Administrador.";
-        }
+            if (login == null)
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "Usuário e senha deve ser informado");
+           return Request.CreateResponse(HttpStatusCode.OK, _repositorio.GetUsuario(login.UserName, login.Password));
+        }        
     }
 }

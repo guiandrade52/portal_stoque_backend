@@ -117,8 +117,8 @@
     <Compile Include="Models\Ocorrencia\IOcorrenciaRepositorio.cs" />
     <Compile Include="Models\Ocorrencia\Ocorrencia.cs" />
     <Compile Include="Models\Ocorrencia\OcorrenciaRepositorio.cs" />
-    <Compile Include="Models\Ocorrencia\FilterOcor.cs" />
-    <Compile Include="Models\Ocorrencia\WhereOcorrencia.cs" />
+    <Compile Include="Models\Usuario\Login.cs" />
+    <Compile Include="Services\Auth.cs" />
     <Compile Include="Models\Usuario\IUserRepositorio.cs" />
     <Compile Include="Models\Usuario\Usuario.cs" />
     <Compile Include="Models\Usuario\UserRepositorio.cs" />
