@@ -33,6 +33,7 @@ namespace PortalStoque.API
 
         private void AtivarGeracaoTokenAcesso(IAppBuilder app)
         {
+            // Configurando fornecimento de token
             var opcoesConfiguracaoToken = new OAuthAuthorizationServerOptions()
             {
                 AllowInsecureHttp = true,
@@ -41,6 +42,7 @@ namespace PortalStoque.API
                 Provider = new ProviderDeTokensDeAcesso()
             };
 
+            //Ativa o uso de access tokens
             app.UseOAuthAuthorizationServer(opcoesConfiguracaoToken);
             app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
         }

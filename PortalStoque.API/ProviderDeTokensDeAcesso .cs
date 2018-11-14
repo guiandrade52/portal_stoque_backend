@@ -31,7 +31,7 @@ namespace PortalStoque.API
             }
             else
             {
-                context.SetError("acesso inválido", "As credenciais do usuário não conferem....");
+                context.SetError("invalid_grant", "Usuário ou senha inválidos");
                 return;
             }
         }
