@@ -23,6 +23,8 @@ namespace PortalStoque.API
                   routeTemplate: "api/{controller}/{id}",
                   defaults: new { id = RouteParameter.Optional }
              );
+               
+
             // ativando cors
             app.UseCors(CorsOptions.AllowAll);
             // ativando a geração do token

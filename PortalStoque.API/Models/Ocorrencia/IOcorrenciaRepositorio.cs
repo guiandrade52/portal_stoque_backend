@@ -1,14 +1,12 @@
-﻿using System;
+﻿using PortalStoque.API.Models.Usuario;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace PortalStoque.API.Models.Ocorrencia
 {
     public interface IOcorrenciaRepositorio
     {
-        IEnumerable<Ocorrencia> GetAll(int pPagina, int pTamPag, string pWhere);
+        IEnumerable<Ocorrencia> GetAll(string filter, int pagina, int tamPag);
+        int GetTotalOcor(string filter);
         Ocorrencia Get(int id);
-        int TotalOcorrencia(string pWhere);
     }
 }

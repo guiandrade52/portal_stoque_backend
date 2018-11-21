@@ -7,7 +7,6 @@ namespace PortalStoque.API.Models.Usuario
 {
     interface IUserRepositorio
     {
-        bool ValidaUsuario(string pLogin, string pSenha);
-        Usuario GetUsuario(string pLogin, string pSenha);
+        UserModel GetCurrentUser(string UserId);
     }
 }

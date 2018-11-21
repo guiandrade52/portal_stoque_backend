@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Web;
 using Dapper;
+using PortalStoque.API.Models.Usuario;
 
 namespace PortalStoque.API.Models.Ocorrencia
 {
     public class OcorrenciaRepositorio : IOcorrenciaRepositorio
     {
         private List<Ocorrencia> ocorrencias = new List<Ocorrencia>();
-
-        public IEnumerable<Ocorrencia> GetAll(int pPagina, int pTamPag, string pWhere)
+        public IEnumerable<Ocorrencia> GetAll(string filter, int pagina, int tamPag)
         {
             var sql = string.Format(@"
             SELECT * FROM (
@@ -62,13 +63,13 @@ namespace PortalStoque.API.Models.Ocorrencia
 			        INNER JOIN TDDOPC OPC WITH(NOLOCK) ON OCO.SITUACAO = OPC.VALOR AND OPC.NUCAMPO = 9999990522
                     {0}
 					) AS TBL
-                WHERE NUMBER BETWEEN ((@pPagina - 1) * @pTamPag + 1) AND (@pPagina * @pTamPag)", pWhere);
+                WHERE NUMBER BETWEEN ((@Pagina - 1) * @TamPag + 1) AND (@Pagina * @TamPag)", filter);
 
             try
             {
                 using (var _Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["principal"].ConnectionString))
                 {
-                    return _Conexao.Query<Ocorrencia>(sql, new { pPagina, pTamPag });
+                    return _Conexao.Query<Ocorrencia>(sql, new { pagina, tamPag });
                 }
 
             }
@@ -77,13 +78,7 @@ namespace PortalStoque.API.Models.Ocorrencia
                 throw new ArgumentException("Erro ao Recuperar dados.");
             }
         }
-
-        public Ocorrencia Get(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int TotalOcorrencia(string pWhere)
+        public int GetTotalOcor(string filter)
         {
             var ret = 0;
             string sql = @"SELECT COUNT(*) FROM AD_STOOCO OCO 
@@ -96,8 +91,8 @@ namespace PortalStoque.API.Models.Ocorrencia
 				                LEFT JOIN TGFPRO PROD WITH(NOLOCK) ON PROD.CODPROD = OCO.CODPROD
 				                INNER JOIN TDDOPC OPC WITH(NOLOCK) ON OCO.SITUACAO = OPC.VALOR AND OPC.NUCAMPO = 9999990522";
 
-            if (!string.IsNullOrEmpty(pWhere))
-                sql = string.Format("{0} {1}", sql, pWhere);
+            if (!string.IsNullOrEmpty(filter))
+                sql = string.Format("{0} {1}", sql, filter);
 
             try
             {
@@ -117,6 +112,11 @@ namespace PortalStoque.API.Models.Ocorrencia
                 throw new ArgumentException("Erro ao contar Ocorrências" + e.Message);
             }
             return ret;
+        }
+
+        public Ocorrencia Get(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
