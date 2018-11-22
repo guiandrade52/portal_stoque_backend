@@ -108,17 +108,23 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ContratoController.cs" />
     <Compile Include="Controllers\OauthController.cs" />
+    <Compile Include="Controllers\services\CacheUserController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
-    <Compile Include="Models\Ocorrencia\FilterModel.cs" />
-    <Compile Include="Models\Ocorrencia\IOcorrenciaRepositorio.cs" />
-    <Compile Include="Models\Ocorrencia\Ocorrencia.cs" />
-    <Compile Include="Models\Ocorrencia\OcorrenciaRepositorio.cs" />
-    <Compile Include="Models\Ocorrencia\WhereClause.cs" />
-    <Compile Include="Models\Usuario\IUserRepositorio.cs" />
-    <Compile Include="Models\Usuario\UserModel.cs" />
-    <Compile Include="Models\Usuario\UserRepositorio.cs" />
+    <Compile Include="Models\Contratos\Contrato.cs" />
+    <Compile Include="Models\Contratos\ContratoRepositorio.cs" />
+    <Compile Include="Models\Contratos\Query.cs" />
+    <Compile Include="Models\Contratos\IContratoRepositorio.cs" />
+    <Compile Include="Models\Ocorrencias\Filter.cs" />
+    <Compile Include="Models\Ocorrencias\IOcorrenciaRepositorio.cs" />
+    <Compile Include="Models\Ocorrencias\Ocorrencia.cs" />
+    <Compile Include="Models\Ocorrencias\OcorrenciaRepositorio.cs" />
+    <Compile Include="Models\Ocorrencias\Query.cs" />
+    <Compile Include="Models\Usuarios\IUsuarioRepositorio.cs" />
+    <Compile Include="Models\Usuarios\Usuario.cs" />
+    <Compile Include="Models\Usuarios\UsuarioRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProviderDeTokensDeAcesso .cs" />
     <Compile Include="Startup.cs" />

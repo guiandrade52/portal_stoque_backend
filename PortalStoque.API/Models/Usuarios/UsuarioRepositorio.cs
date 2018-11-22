@@ -1,19 +1,17 @@
 ﻿using Dapper;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Security.Claims;
 using System.Web;
 using System.Web.Caching;
 
-namespace PortalStoque.API.Models.Usuario
+namespace PortalStoque.API.Models.Usuarios
 {
-    public class UserRepositorio : IUserRepositorio
+    public class UsuarioRepositorio : IUsuarioRepositorio
     {
 
-        public static UserModel GetUsuario(string pLogin, string pSenha)
+        public static Usuario GetUsuario(string pLogin, string pSenha)
         {
             try
             {
@@ -24,7 +22,7 @@ namespace PortalStoque.API.Models.Usuario
                         var password = pSenha;//CriptoHelper.HashMD5(pPassword);
                         pLogin.ToLower();
 
-                        var usuario = conexao.Query<UserModel>
+                        var usuario = conexao.Query<Usuario>
                             (@"SELECT PRTL.IDUSUPRTL AS IdUsuario,
 	                                CTT.NOMECONTATO AS Nome,
 	                                PRTL.PSWUSU AS Password,
@@ -67,7 +65,7 @@ namespace PortalStoque.API.Models.Usuario
             }
         }
 
-        public static UserModel GetUsuario(int Id)
+        public static Usuario GetUsuario(int Id)
         {
             try
             {
@@ -75,7 +73,7 @@ namespace PortalStoque.API.Models.Usuario
                 {
                     if (Id > 0)
                     {
-                        var usuario = conexao.Query<UserModel>
+                        var usuario = conexao.Query<Usuario>
                             (@"SELECT PRTL.IDUSUPRTL AS IdUsuario,
 	                                CTT.NOMECONTATO AS Nome,
 	                                PRTL.LGNUSU AS Login,
@@ -117,9 +115,9 @@ namespace PortalStoque.API.Models.Usuario
             }
         }
 
-        public UserModel GetCurrentUser(string userId)
+        public Usuario GetCurrentUser(string userId)
         {
-            UserModel dataUser = (UserModel)HttpContext.Current.Cache.Get("UserId=" + userId);
+            Usuario dataUser = (Usuario)HttpContext.Current.Cache.Get("UserId=" + userId);
             if (dataUser == null)
             {
                 dataUser = GetUsuario(Convert.ToInt32(userId));

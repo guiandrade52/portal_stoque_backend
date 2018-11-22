@@ -1,5 +1,5 @@
 ﻿using Microsoft.Owin.Security.OAuth;
-using PortalStoque.API.Models.Usuario;
+using PortalStoque.API.Models.Usuarios;
 using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -17,7 +17,7 @@ namespace PortalStoque.API
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
-            UserModel _user = UserRepositorio.GetUsuario(context.UserName, context.Password);
+            Usuario _user = UsuarioRepositorio.GetUsuario(context.UserName, context.Password);
 
             if (_user != null)
             {

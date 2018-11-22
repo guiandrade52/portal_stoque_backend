@@ -1,14 +1,10 @@
-﻿using PortalStoque.API.Models.Usuario;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using PortalStoque.API.Models.Usuarios;
 
-namespace PortalStoque.API.Models.Ocorrencia
+namespace PortalStoque.API.Models.Ocorrencias
 {
-    public class WhereClause
+    public class Query
     {
-        public static string GetFilter(FilterModel filter, UserModel user)
+        public static string GetFilter(Filter filter, Usuario user)
         {
             string where = "WHERE 1 = 1";
 
@@ -40,7 +36,7 @@ namespace PortalStoque.API.Models.Ocorrencia
         }
 
 
-        private static string Filter(FilterModel filter)
+        private static string Filter(Filter filter)
         {
             string where = "";
             int numero = 0;

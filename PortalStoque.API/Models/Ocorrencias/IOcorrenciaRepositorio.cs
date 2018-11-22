@@ -1,7 +1,6 @@
-﻿using PortalStoque.API.Models.Usuario;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace PortalStoque.API.Models.Ocorrencia
+namespace PortalStoque.API.Models.Ocorrencias
 {
     public interface IOcorrenciaRepositorio
     {

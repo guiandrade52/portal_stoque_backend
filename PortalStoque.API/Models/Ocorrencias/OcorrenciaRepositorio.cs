@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Web;
 using Dapper;
-using PortalStoque.API.Models.Usuario;
 
-namespace PortalStoque.API.Models.Ocorrencia
+namespace PortalStoque.API.Models.Ocorrencias
 {
     public class OcorrenciaRepositorio : IOcorrenciaRepositorio
     {

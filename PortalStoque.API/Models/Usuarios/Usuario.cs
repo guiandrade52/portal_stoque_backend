@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace PortalStoque.API.Models.Usuario
+namespace PortalStoque.API.Models.Usuarios
 {
-    public class UserModel
+    public class Usuario
     {
         public int IdUsuario { get; set; }
         public string Nome { get; set; }

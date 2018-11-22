@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace PortalStoque.API.Models.Ocorrencia
+namespace PortalStoque.API.Models.Ocorrencias
 {
-    public class FilterModel
+    public class Filter
     {
         public string SearchMultiple { get; set; }
         public string DateInit { get; set; }
