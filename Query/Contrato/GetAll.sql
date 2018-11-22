@@ -6,7 +6,7 @@ SET @pCodParceiro = '91'
 SET @filtroWhere = LOWER('%%')
 SET @pNumSerie = '39021292369'
 
-/* MODEL CONTRATO */
+/* MODEL CONTRATO 
 
 	SELECT
 		CON.NUMCONTRATO AS CodContrato,
@@ -16,7 +16,12 @@ SET @pNumSerie = '39021292369'
 		WHERE 1 = 1
 		AND CON.NUMCONTRATO <> 0
 		AND CON.ATIVO = 'S'
-		AND PAR.CODPARC = 1
+		AND PAR.CODPARC IN (1)
+*/
+
+
+
+
 
 
 			--SELECT CON.NUMCONTRATO

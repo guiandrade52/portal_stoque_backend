@@ -6,9 +6,7 @@ namespace PortalStoque.API.Models.Contratos
     {
         public static string GetFilter(Permisoes permisao)
         {
-            string _where = @"WHERE 1 = 1
-                            AND CON.NUMCONTRATO <> 0
-                            AND CON.ATIVO = 'S'";
+            string _where = @"WHERE CON.NUMCONTRATO <> 0 AND CON.ATIVO = 'S' ";
 
             if (permisao.Perfil == "C" || permisao.Perfil == "CO")
             {
