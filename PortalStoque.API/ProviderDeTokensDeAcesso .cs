@@ -17,15 +17,21 @@ namespace PortalStoque.API
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
-            Usuario _user = UsuarioRepositorio.GetUsuario(context.UserName, context.Password);
+            IUsuarioRepositorio _UserRepositorio = new UsuarioRepositorio();
 
-            if (_user != null)
+            Login login = new Login
+            {
+                UserName = context.UserName,
+                Password = context.Password
+            };
+
+            login = _UserRepositorio.Login(login);
+
+            if (login != null)
             {
                 var identity = new ClaimsIdentity(context.Options.AuthenticationType);
                 identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
-                identity.AddClaim(new Claim("UserId", _user.IdUsuario.ToString()));
-                HttpContext.Current.Cache.Add("UserId=" + _user.IdUsuario, _user, null, DateTime.Now.AddHours(60), Cache.NoSlidingExpiration, CacheItemPriority.High, null);
-
+                identity.AddClaim(new Claim("UserId", login.IdUsuario.ToString()));
                 context.Validated(identity);
             }
             else

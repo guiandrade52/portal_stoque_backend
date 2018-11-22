@@ -14,8 +14,8 @@ namespace PortalStoque.API.Controllers
         [Route("GetUser")]
         public HttpResponseMessage GetUser()
         {
-            var u = new services.CacheUserController();
-            return Request.CreateResponse(HttpStatusCode.OK, u.GetUser());
+            var u = new services.UsuarioCorrent();
+            return Request.CreateResponse(HttpStatusCode.OK, u.GetPermisoes());
         }        
     }
 }

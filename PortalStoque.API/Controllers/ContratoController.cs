@@ -11,8 +11,8 @@ namespace PortalStoque.API.Controllers
         static readonly IContratoRepositorio _contratoRepositorio = new ContratoRepositorio();
         public HttpResponseMessage GetAll()
         {
-            var u = new services.CacheUserController();
-            var user = u.GetUser();
+            var u = new services.UsuarioCorrent();
+            var user = u.GetPermisoes();
             string filter = Query.GetFilter(user);          
 
             return Request.CreateResponse(HttpStatusCode.OK, _contratoRepositorio.GetAll(filter));

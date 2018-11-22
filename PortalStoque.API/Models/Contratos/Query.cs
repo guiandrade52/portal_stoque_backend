@@ -4,7 +4,7 @@ namespace PortalStoque.API.Models.Contratos
 {
     public class Query
     {
-        public static string GetFilter(Usuario usuario)
+        public static string GetFilter(Permisoes usuario)
         {
             string query = @"WHERE 1 = 1
                     AND CON.NUMCONTRATO <> 0

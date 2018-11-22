@@ -7,6 +7,8 @@ namespace PortalStoque.API.Models.Usuarios
 {
     interface IUsuarioRepositorio
     {
-        Usuario GetCurrentUser(string UserId);
+        Usuario GetUsuario(int id);
+        Permisoes GetPermisoes(int id);
+        Login Login(Login login);
     }
 }

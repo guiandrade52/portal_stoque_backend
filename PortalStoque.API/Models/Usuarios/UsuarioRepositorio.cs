@@ -10,120 +10,92 @@ namespace PortalStoque.API.Models.Usuarios
 {
     public class UsuarioRepositorio : IUsuarioRepositorio
     {
-
-        public static Usuario GetUsuario(string pLogin, string pSenha)
+        public Login Login(Login login)
         {
             try
             {
                 using (var conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["principal"].ConnectionString))
                 {
-                    if (!string.IsNullOrWhiteSpace(pLogin) && !string.IsNullOrWhiteSpace(pSenha))
+                    if (!string.IsNullOrWhiteSpace(login.UserName) && !string.IsNullOrWhiteSpace(login.Password))
                     {
-                        var password = pSenha;//CriptoHelper.HashMD5(pPassword);
-                        pLogin.ToLower();
+                        //CriptoHelper.HashMD5(pPassword);
+                        login.UserName.ToLower();
 
-                        var usuario = conexao.Query<Usuario>
-                            (@"SELECT PRTL.IDUSUPRTL AS IdUsuario,
-	                                CTT.NOMECONTATO AS Nome,
-	                                PRTL.PSWUSU AS Password,
-	                                PRTL.LGNUSU AS Login,
-	                                PRTL.PRFLUSU AS Perfil,
-	                                CTT.EMAIL AS Email,
-                                    CTT.TELEFONE AS Telefone,
-	                                PRTL.ALTPSW AS AltPassword,
-	                                PRTL.RGSTOCOR AS RgtOcorrencia,
-	                                PRTL.CODPARC AS CodParc,
-	                                PRTL.CODCONTATO AS CodContato,
-	                                STUFF((SELECT ', ' + RTRIM(CON.CODPARCAT) AS [text()]
-	                                FROM AD_USUPRTLCON CON
-	                                WHERE CON.IDUSUPRTL = PRTL.IDUSUPRTL
-	                                FOR XML PATH('')), 1, 1, '' ) AS CodParcAt,
-	                                STUFF((SELECT ', ' + RTRIM(CON.CODPARCAB) AS [text()]
-	                                FROM AD_USUPRTLCON CON
-	                                WHERE CON.IDUSUPRTL = PRTL.IDUSUPRTL
-	                                FOR XML PATH('')), 1, 1, '' ) AS CodParcAb,
-	                                STUFF((SELECT ', ' + RTRIM(CON.NUMCONTRATO) AS [text()]
-	                                FROM AD_USUPRTLCON CON
-	                                WHERE CON.IDUSUPRTL = PRTL.IDUSUPRTL
-	                                FOR XML PATH('')), 1, 1, '' ) AS NumContrato
-	                                FROM AD_USUPRTL PRTL
-	                                INNER JOIN TGFCTT CTT WITH(NOLOCK) ON CTT.CODCONTATO = PRTL.CODCONTATO AND CTT.CODPARC = PRTL.CODPARC
-                                    WHERE PRTL.LGNUSU = @pLogin AND PRTL.PSWUSU = @password", new { pLogin, password }).ToList();
-                        if (usuario.Count > 0)
-                            return usuario.First();
-                        else
-                            return null;
+                        return conexao.Query<Login>
+                            (@"SELECT 
+	                            PRTL.IDUSUPRTL AS IdUsuario,
+	                            CTT.NOMECONTATO AS Nome,
+	                            PRTL.LGNUSU AS UserName
+	                            FROM AD_USUPRTL PRTL
+	                            INNER JOIN TGFCTT CTT WITH(NOLOCK) ON CTT.CODCONTATO = PRTL.CODCONTATO AND CTT.CODPARC = PRTL.CODPARC
+                                WHERE PRTL.LGNUSU = @UserName AND PRTL.PSWUSU = @Password", new { login.UserName, login.Password }).First();
                     }
                     else
                         return null;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                //Log.LogWrite("ValidaUsuario", e.Message);
                 return null;
             }
         }
 
-        public static Usuario GetUsuario(int Id)
+        public Usuario GetUsuario(int id)
         {
             try
             {
                 using (var conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["principal"].ConnectionString))
                 {
-                    if (Id > 0)
-                    {
-                        var usuario = conexao.Query<Usuario>
-                            (@"SELECT PRTL.IDUSUPRTL AS IdUsuario,
-	                                CTT.NOMECONTATO AS Nome,
-	                                PRTL.LGNUSU AS Login,
-	                                PRTL.PRFLUSU AS Perfil,
-	                                CTT.EMAIL AS Email,
-                                    CTT.TELEFONE AS Telefone,
-	                                PRTL.ALTPSW AS AltPassword,
-	                                PRTL.RGSTOCOR AS RgtOcorrencia,
-	                                PRTL.CODPARC AS CodParc,
-	                                PRTL.CODCONTATO AS CodContato,
-	                                STUFF((SELECT ', ' + RTRIM(CON.CODPARCAT) AS [text()]
-	                                FROM AD_USUPRTLCON CON
-	                                WHERE CON.IDUSUPRTL = PRTL.IDUSUPRTL
-	                                FOR XML PATH('')), 1, 1, '' ) AS CodParcAt,
-	                                STUFF((SELECT ', ' + RTRIM(CON.CODPARCAB) AS [text()]
-	                                FROM AD_USUPRTLCON CON
-	                                WHERE CON.IDUSUPRTL = PRTL.IDUSUPRTL
-	                                FOR XML PATH('')), 1, 1, '' ) AS CodParcAb,
-	                                STUFF((SELECT ', ' + RTRIM(CON.NUMCONTRATO) AS [text()]
-	                                FROM AD_USUPRTLCON CON
-	                                WHERE CON.IDUSUPRTL = PRTL.IDUSUPRTL
-	                                FOR XML PATH('')), 1, 1, '' ) AS NumContrato
-	                                FROM AD_USUPRTL PRTL
-	                                INNER JOIN TGFCTT CTT WITH(NOLOCK) ON CTT.CODCONTATO = PRTL.CODCONTATO AND CTT.CODPARC = PRTL.CODPARC
-                                    WHERE PRTL.IDUSUPRTL = @Id", new { Id }).ToList();
-                        if (usuario.Count > 0)
-                            return usuario.First();
-                        else
-                            return null;
-                    }
-                    else
-                        return null;
+                    return conexao.Query<Usuario>
+                            (@"SELECT 
+	                            PRTL.IDUSUPRTL AS IdUsuario,
+	                            CTT.NOMECONTATO AS Nome,
+	                            PRTL.LGNUSU AS Login,
+	                            CTT.EMAIL AS Email,
+                                CTT.TELEFONE AS Telefone
+	                            FROM AD_USUPRTL PRTL
+	                            INNER JOIN TGFCTT CTT WITH(NOLOCK) ON CTT.CODCONTATO = PRTL.CODCONTATO AND CTT.CODPARC = PRTL.CODPARC
+                                WHERE PRTL.IDUSUPRTL = @id", new { id }).First();
                 }
             }
             catch (Exception e)
             {
-                //Log.LogWrite("ValidaUsuario", e.Message);
-                return null;
+                throw new ArgumentException("Erro ao tentar recuperar Usuário. " + e.Message);
             }
         }
+        
 
-        public Usuario GetCurrentUser(string userId)
+        public Permisoes GetPermisoes(int id)
         {
-            Usuario dataUser = (Usuario)HttpContext.Current.Cache.Get("UserId=" + userId);
-            if (dataUser == null)
+            try
             {
-                dataUser = GetUsuario(Convert.ToInt32(userId));
-                HttpContext.Current.Cache.Add("UserId=" + dataUser.IdUsuario, dataUser, null, DateTime.Now.AddHours(60), Cache.NoSlidingExpiration, CacheItemPriority.High, null);
+                using (var conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["principal"].ConnectionString))
+                {
+                    return conexao.Query<Permisoes>
+                        (@"SELECT 
+                            PRTL.ALTPSW AS AltPassword,
+                            PRTL.PRFLUSU AS Perfil,
+                            PRTL.RGSTOCOR AS RgtOcorrencia,
+                            STUFF((SELECT ', ' + RTRIM(CON.CODPARCAT) AS [text()]
+                            FROM AD_USUPRTLCON CON
+                            WHERE CON.IDUSUPRTL = PRTL.IDUSUPRTL
+                            FOR XML PATH('')), 1, 1, '' ) AS ClienteAt,
+                            STUFF((SELECT ', ' + RTRIM(CON.CODPARCAB) AS [text()]
+                            FROM AD_USUPRTLCON CON
+                            WHERE CON.IDUSUPRTL = PRTL.IDUSUPRTL
+                            FOR XML PATH('')), 1, 1, '' ) AS ClienteAb,
+                            STUFF((SELECT ', ' + RTRIM(CON.NUMCONTRATO) AS [text()]
+                            FROM AD_USUPRTLCON CON
+                            WHERE CON.IDUSUPRTL = PRTL.IDUSUPRTL
+                            FOR XML PATH('')), 1, 1, '' ) AS NumContrato
+                            FROM AD_USUPRTL PRTL
+                            WHERE PRTL.IDUSUPRTL = @id", new { id }).First();
+                }
             }
-            return dataUser;
+            catch (Exception e)
+            {
+                throw new ArgumentException("Erro ao tentar recuperar Permissões do Usuário. " + e.Message);
+            }
         }
     }
 }
