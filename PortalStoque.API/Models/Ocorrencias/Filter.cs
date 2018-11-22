@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace PortalStoque.API.Models.Ocorrencias
+﻿namespace PortalStoque.API.Models.Ocorrencias
 {
     public class Filter
     {
