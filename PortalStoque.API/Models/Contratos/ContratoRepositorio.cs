@@ -11,7 +11,6 @@ namespace PortalStoque.API.Models.Contratos
     {
         public IEnumerable<Contrato> GetAll(string filter)
         {
-            List<Contrato> contrato;
             string query = string.Format(@"SELECT
                                 CON.NUMCONTRATO AS CodContrato,
 	                            PAR.NOMEPARC AS Nome
@@ -22,15 +21,13 @@ namespace PortalStoque.API.Models.Contratos
             {
                 using (var _Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["principal"].ConnectionString))
                 {
-                    contrato = _Conexao.Query<Contrato>(query).ToList();
+                    return _Conexao.Query<Contrato>(query).ToList();
                 }
             }
             catch (Exception e)
             {
                 throw new ArgumentException("Erro ao tentar recuperar Contratos. " + e.Message);
             }
-
-            return contrato;
         }
     }
 }

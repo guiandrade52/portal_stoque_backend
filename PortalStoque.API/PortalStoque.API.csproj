@@ -108,6 +108,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ContatoController.cs" />
     <Compile Include="Controllers\ContratoController.cs" />
     <Compile Include="Controllers\OauthController.cs" />
     <Compile Include="Controllers\SerieController.cs" />
@@ -115,6 +116,10 @@
     <Compile Include="Controllers\ServicoController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
+    <Compile Include="Models\Contato\Contato.cs" />
+    <Compile Include="Models\Contato\ContatoRepositorio.cs" />
+    <Compile Include="Models\Contato\IContatoRepositorio.cs" />
+    <Compile Include="Models\Contato\Query.cs" />
     <Compile Include="Models\Contratos\Contrato.cs" />
     <Compile Include="Models\Contratos\ContratoRepositorio.cs" />
     <Compile Include="Models\Contratos\Query.cs" />
