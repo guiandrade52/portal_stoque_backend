@@ -112,6 +112,7 @@
     <Compile Include="Controllers\OauthController.cs" />
     <Compile Include="Controllers\SerieController.cs" />
     <Compile Include="Controllers\services\UsuarioCorrent.cs" />
+    <Compile Include="Controllers\ServicoController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Models\Contratos\Contrato.cs" />
@@ -127,6 +128,10 @@
     <Compile Include="Models\Series\Query.cs" />
     <Compile Include="Models\Series\Serie.cs" />
     <Compile Include="Models\Series\SerieRepositorio.cs" />
+    <Compile Include="Models\Servicos\IServicoRepositorio.cs" />
+    <Compile Include="Models\Servicos\Query.cs" />
+    <Compile Include="Models\Servicos\Servico.cs" />
+    <Compile Include="Models\Servicos\ServicoRepositorio.cs" />
     <Compile Include="Models\Usuarios\IUsuarioRepositorio.cs" />
     <Compile Include="Models\Usuarios\Login.cs" />
     <Compile Include="Models\Usuarios\Usuario.cs" />

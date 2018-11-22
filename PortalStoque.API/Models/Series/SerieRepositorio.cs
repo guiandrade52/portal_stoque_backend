@@ -12,7 +12,6 @@ namespace PortalStoque.API.Models.Series
     {
         public IEnumerable<Serie> GetAll(string filter)
         {
-            List<Serie> series;
             string query = string.Format(@"SELECT TOP 100
 			                                EQP.CONTROLE AS CodSerie,
 			                                SERIE.CONTROLEFAB AS CodSerieFab,			
@@ -30,15 +29,13 @@ namespace PortalStoque.API.Models.Series
             {
                 using (var _Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["principal"].ConnectionString))
                 {
-                    series = _Conexao.Query<Serie>(query).ToList();
+                    return _Conexao.Query<Serie>(query).ToList();
                 }
             }
             catch (Exception e)
             {
                 throw new ArgumentException("Erro ao tentar recuperar Contratos. " + e.Message);
             }
-
-            return series;
         }
     }
 }
