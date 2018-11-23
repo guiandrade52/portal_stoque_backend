@@ -6,7 +6,7 @@ using System.Web;
 
 namespace PortalStoque.API.Models.Servicos
 {
-    public class Query
+    public class QueryServico
     {
         public static string GetFilter(Permisoes permisao)
         {

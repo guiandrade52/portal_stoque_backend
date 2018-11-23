@@ -2,7 +2,7 @@
 
 namespace PortalStoque.API.Models.Ocorrencias
 {
-    public class Query
+    public class QueryOcor
     {
         public static string GetFilter(Filter filter, Permisoes permisao, Usuario usuario)
         {

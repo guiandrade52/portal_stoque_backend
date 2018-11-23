@@ -16,7 +16,7 @@ namespace PortalStoque.API.Controllers
         public HttpResponseMessage GetAll([FromUri]Filter pFilter)
         {
             var u = new services.UsuarioCorrent();
-            string filter = Query.GetFilter(pFilter, u.GetPermisoes(), u.GetUsuario());
+            string filter = QueryOcor.GetFilter(pFilter, u.GetPermisoes(), u.GetUsuario());
 
             List<Ocorrencia> Tasks = _OcorRepositorio.GetAll(filter, pFilter.Pagina, pFilter.TamPag).ToList();
             int TotalOcor = _OcorRepositorio.GetTotalOcor(filter);

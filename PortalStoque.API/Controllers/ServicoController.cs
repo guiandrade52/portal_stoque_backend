@@ -15,7 +15,7 @@ namespace PortalStoque.API.Controllers
         {
             var u = new services.UsuarioCorrent();
             var user = u.GetPermisoes();
-            string filter = Query.GetFilter(user);
+            string filter = QueryServico.GetFilter(user);
 
             return Request.CreateResponse(HttpStatusCode.OK, _servicoRepositorio.GetAll(filter));
         }

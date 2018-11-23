@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
@@ -95,6 +96,21 @@ namespace PortalStoque.API.Models.Usuarios
             catch (Exception e)
             {
                 throw new ArgumentException("Erro ao tentar recuperar Permissões do Usuário. " + e.Message);
+            }
+        }
+
+        public IEnumerable<Usuario> GetAll(string filter)
+        {
+            try
+            {
+                using (var conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["principal"].ConnectionString))
+                {
+                    return conexao.Query<Usuario>(filter).ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                throw new ArgumentException("Erro ao tentar recuperar Usuários. " + e.Message);
             }
         }
     }

@@ -8,14 +8,12 @@ namespace PortalStoque.API.Controllers
     [Authorize]
     public class UsuarioController : ApiController
     {
-        static readonly IUsuarioRepositorio _repositorio = new UsuarioRepositorio();
-
         [HttpPost]
         [Route("GetUser")]
-        public HttpResponseMessage GetUser()
+        public HttpResponseMessage GetUsuario()
         {
             var u = new services.UsuarioCorrent();
             return Request.CreateResponse(HttpStatusCode.OK, u.GetPermisoes());
-        }        
+        }
     }
 }

@@ -10,5 +10,6 @@ namespace PortalStoque.API.Models.Usuarios
         Usuario GetUsuario(int id);
         Permisoes GetPermisoes(int id);
         Login Login(Login login);
+        IEnumerable<Usuario> GetAll(string filter);
     }
 }

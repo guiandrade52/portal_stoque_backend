@@ -13,7 +13,7 @@ namespace PortalStoque.API.Controllers
         {
             var u = new services.UsuarioCorrent();
             var user = u.GetPermisoes();
-            string filter = Query.GetFilter(user);
+            string filter = QueryContrato.GetFilter(user);
 
             return Request.CreateResponse(HttpStatusCode.OK, _contratoRepositorio.GetAll(filter));
         }
