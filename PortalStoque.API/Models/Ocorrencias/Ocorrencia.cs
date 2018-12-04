@@ -1,4 +1,8 @@
-﻿namespace PortalStoque.API.Models.Ocorrencias
+﻿using PortalStoque.API.Models.Cits;
+using PortalStoque.API.Models.Rats;
+using System.Collections.Generic;
+
+namespace PortalStoque.API.Models.Ocorrencias
 {
     public class Ocorrencia
     {
@@ -29,5 +33,7 @@
         public string Descricao { get; set; }
         public string Produto { get; set; }
         public int idSituacao { get; set; }
+        public IEnumerable<Rat> Rat { get; set; }
+        public Cit Cit { get; set; }
     }
 }

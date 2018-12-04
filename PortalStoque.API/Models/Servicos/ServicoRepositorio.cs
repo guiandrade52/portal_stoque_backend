@@ -12,19 +12,11 @@ namespace PortalStoque.API.Models.Servicos
     {
         public IEnumerable<Servico> GetAll(string filter)
         {
-            string query = string.Format(@"SELECT 
-		                                    DISTINCT 
-		                                    PRO.CODGRUPOPROD AS CodServico,
-		                                    GRU.DESCRGRUPOPROD AS Nome
-		                                    FROM TGFPRO PRO 
-		                                    INNER JOIN TGFGRU GRU  WITH(NOLOCK) ON GRU.CODGRUPOPROD = PRO.CODGRUPOPROD
-                                        {0}", filter);
-
             try
             {
                 using (var _Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["principal"].ConnectionString))
                 {
-                    return _Conexao.Query<Servico>(query).ToList();
+                    return _Conexao.Query<Servico>(filter).ToList();
                 }
             }
             catch (Exception e)

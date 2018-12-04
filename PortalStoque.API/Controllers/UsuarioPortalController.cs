@@ -11,11 +11,11 @@ namespace PortalStoque.API.Controllers
     public class UsuarioPortalController : ApiController
     {
         static readonly IUsuarioRepositorio _usuarioRepositorio = new UsuarioRepositorio();
-        public HttpResponseMessage GetAll()
+        public HttpResponseMessage GetAll(string search)
         {
             var u = new services.UsuarioCorrent();
             var permisoes = u.GetPermisoes();
-            string filter = QueryUsuario.GetFilter(permisoes);
+            string filter = QueryUsuario.GetFilter(permisoes, search);
 
             return Request.CreateResponse(HttpStatusCode.OK, _usuarioRepositorio.GetAll(filter));
         }

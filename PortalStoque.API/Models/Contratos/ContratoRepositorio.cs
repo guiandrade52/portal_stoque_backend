@@ -11,7 +11,7 @@ namespace PortalStoque.API.Models.Contratos
     {
         public IEnumerable<Contrato> GetAll(string filter)
         {
-            string query = string.Format(@"SELECT
+            string query = string.Format(@"SELECT TOP 100
                                 CON.NUMCONTRATO AS CodContrato,
 	                            PAR.NOMEPARC AS Nome
                                 FROM TCSCON CON

@@ -9,11 +9,11 @@ namespace PortalStoque.API.Controllers
     public class ContratoController : ApiController
     {
         static readonly IContratoRepositorio _contratoRepositorio = new ContratoRepositorio();
-        public HttpResponseMessage GetAll()
+        public HttpResponseMessage GetAll(string search)
         {
             var u = new services.UsuarioCorrent();
             var user = u.GetPermisoes();
-            string filter = QueryContrato.GetFilter(user);
+            string filter = QueryContrato.GetFilter(user, search);
 
             return Request.CreateResponse(HttpStatusCode.OK, _contratoRepositorio.GetAll(filter));
         }

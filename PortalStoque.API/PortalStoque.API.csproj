@@ -111,16 +111,21 @@
     <Compile Include="Controllers\ContatoController.cs" />
     <Compile Include="Controllers\ContratoController.cs" />
     <Compile Include="Controllers\OauthController.cs" />
+    <Compile Include="Controllers\ParceiroAbController.cs" />
+    <Compile Include="Controllers\ParceiroAtController.cs" />
     <Compile Include="Controllers\SerieController.cs" />
     <Compile Include="Controllers\services\UsuarioCorrent.cs" />
     <Compile Include="Controllers\ServicoController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\UsuarioPortalController.cs" />
-    <Compile Include="Models\Contato\Contato.cs" />
-    <Compile Include="Models\Contato\ContatoRepositorio.cs" />
-    <Compile Include="Models\Contato\IContatoRepositorio.cs" />
-    <Compile Include="Models\Contato\QueryContato.cs" />
+    <Compile Include="Models\Cits\Cit.cs" />
+    <Compile Include="Models\Cits\CitRepositorio.cs" />
+    <Compile Include="Models\Cits\ICitRepositorio.cs" />
+    <Compile Include="Models\Contatos\Contato.cs" />
+    <Compile Include="Models\Contatos\ContatoRepositorio.cs" />
+    <Compile Include="Models\Contatos\IContatoRepositorio.cs" />
+    <Compile Include="Models\Contatos\QueryContato.cs" />
     <Compile Include="Models\Contratos\Contrato.cs" />
     <Compile Include="Models\Contratos\ContratoRepositorio.cs" />
     <Compile Include="Models\Contratos\QueryContrato.cs" />
@@ -130,6 +135,14 @@
     <Compile Include="Models\Ocorrencias\Ocorrencia.cs" />
     <Compile Include="Models\Ocorrencias\OcorrenciaRepositorio.cs" />
     <Compile Include="Models\Ocorrencias\QueryOcor.cs" />
+    <Compile Include="Models\Parceiros\IParceiroRepositorio.cs" />
+    <Compile Include="Models\Parceiros\Parceiro.cs" />
+    <Compile Include="Models\Parceiros\ParceiroRepositorio.cs" />
+    <Compile Include="Models\Parceiros\QueryParceiroAt.cs" />
+    <Compile Include="Models\Parceiros\QueryParceiroAb.cs" />
+    <Compile Include="Models\Rats\IRatRepositorio.cs" />
+    <Compile Include="Models\Rats\Rat.cs" />
+    <Compile Include="Models\Rats\RatRepositorio.cs" />
     <Compile Include="Models\Series\ISerieRepositorio.cs" />
     <Compile Include="Models\Series\QuerySerie.cs" />
     <Compile Include="Models\Series\Serie.cs" />
@@ -145,11 +158,23 @@
     <Compile Include="Models\Usuarios\Permisoes.cs" />
     <Compile Include="Models\Usuarios\UsuarioRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="ProviderDeTokensDeAcesso .cs" />
+    <Compile Include="Services\ServiceSankhya.cs" />
+    <Compile Include="Services\SWServiceInvoker.cs" />
+    <Compile Include="Services\SWServiceInvokerJson.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -157,9 +182,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

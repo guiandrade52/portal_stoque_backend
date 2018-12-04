@@ -5,7 +5,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 
-namespace PortalStoque.API.Models.Contato
+namespace PortalStoque.API.Models.Contatos
 {
     public class ContatoRepositorio : IContatoRepositorio
     {
