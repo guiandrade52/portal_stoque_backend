@@ -1,4 +1,5 @@
-﻿using PortalStoque.API.Models.Cits;
+﻿using PortalStoque.API.Models.Anexos;
+using PortalStoque.API.Models.Cits;
 using PortalStoque.API.Models.Ocorrencias;
 using PortalStoque.API.Models.Rats;
 using PortalStoque.API.Services;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Xml;
 
@@ -20,6 +22,7 @@ namespace PortalStoque.API.Controllers
         static readonly IOcorrenciaRepositorio _OcorRepositorio = new OcorrenciaRepositorio();
         static readonly IRatRepositorio _RatRepositorio = new RatRepositorio();
         static readonly ICitRepositorio _CitRepositorio = new CitRepositorio();
+        static readonly IAnexoRepositorio _AnexoRepositorio = new AnexoRepositorio();
 
         public HttpResponseMessage GetAll([FromUri]Filter pFilter)
         {
@@ -33,6 +36,7 @@ namespace PortalStoque.API.Controllers
             {
                 item.Rat = _RatRepositorio.GetDataRat(item.ExecutionId);
                 item.Cit = _CitRepositorio.GetCit(item.ExecutionId);
+                item.Anexos = _AnexoRepositorio.GetAnexo(item.ExecutionId);
             }
 
             return Request.CreateResponse(HttpStatusCode.OK, new { Tasks, TotalOcor });
@@ -42,32 +46,42 @@ namespace PortalStoque.API.Controllers
         [HttpGet]
         public HttpResponseMessage Rat(int executionId, int visita)
         {
-            if (visita == 0 || executionId == 0)
-                return Request.CreateResponse(HttpStatusCode.BadRequest, "Número da Visita e ExecutionId são obrigatórios.");
-
-            string path = System.Web.Hosting.HostingEnvironment.MapPath(string.Format("~/Anexos/RAT_{0}_{1}.pdf", executionId, visita));
-
-            if (!File.Exists(path))
+            int i = 1;
+            List<int> visitaError = new List<int>();
+            while (i <= visita)
             {
-                IRatRepositorio _ratRepositorio = new RatRepositorio();
+                string pathRat = System.Web.Hosting.HostingEnvironment.MapPath(string.Format("~/Temp/RAT_{0}_{1}.pdf", executionId, i));
 
-                ServiceSankhya.Service.pathcreatefile = System.Web.Hosting.HostingEnvironment.MapPath("~/Anexos/");
-                string body = _ratRepositorio.GetRATXML(executionId, visita);
-                body = body.Replace("'", "\"");
-                ServiceSankhya.Service.nuocor = Convert.ToString(executionId);
-                ServiceSankhya.Service.nuvisita = Convert.ToString(visita);
-
-
-                XmlDocument doc = ServiceSankhya.Service.call("report.bpms", "bhbpmsnkbpms", body);
-
-                path = doc.FirstChild.InnerText;
+                if (!File.Exists(pathRat))
+                {
+                    IRatRepositorio _ratRepositorio = new RatRepositorio();
+                    ServiceSankhya.Service.pathcreatefile = System.Web.Hosting.HostingEnvironment.MapPath("~/Temp/");
+                    string body = _ratRepositorio.GetRATXML(executionId, i);
+                    body = body.Replace("'", "\"");
+                    ServiceSankhya.Service.nuocor = Convert.ToString(executionId);
+                    ServiceSankhya.Service.nuvisita = Convert.ToString(i);
+                    try
+                    {
+                        XmlDocument doc = ServiceSankhya.Service.call("report.bpms", "bhbpmsnkbpms", body);
+                    }
+                    catch (Exception)
+                    {
+                        if (i == visita)
+                            visitaError.Add(i);
+                        else
+                            visitaError.Add(i);
+                        i++;
+                    }
+                }
+                else
+                {
+                    i++;
+                }
             }
-
-            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
-            FileStream fileStream = File.OpenRead(path);
-            response.Content = new StreamContent(fileStream);
-            response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/pdf");
-            return response;
+            if (visitaError.Count > 0)
+                return Request.CreateResponse(HttpStatusCode.PartialContent, visitaError);
+            else
+                return Request.CreateResponse(HttpStatusCode.OK);
         }
 
         [Route("Task/Cit")]
@@ -77,7 +91,8 @@ namespace PortalStoque.API.Controllers
             if (executionId == 0)
                 return Request.CreateResponse(HttpStatusCode.BadRequest, "Número da Visita e ExecutionId são obrigatórios.");
 
-            string path = System.Web.Hosting.HostingEnvironment.MapPath(string.Format("~/Anexos/CIT_{0}.pdf", executionId));
+            string path = System.Web.Hosting.HostingEnvironment.MapPath(string.Format("~/Temp/CIT_{0}.pdf", executionId));
+            ServiceSankhya.Service.pathcreatefile = System.Web.Hosting.HostingEnvironment.MapPath("~/Temp/");
 
             if (!File.Exists(path))
             {
@@ -87,7 +102,6 @@ namespace PortalStoque.API.Controllers
                                                  </parametros>
                                                  </relatorio>", executionId);
                 body = body.Replace("'", "\"");
-                ServiceSankhya.Service.pathcreatefile = System.Web.Hosting.HostingEnvironment.MapPath("~/Anexos/");
                 ServiceSankhya.Service.nuocor = Convert.ToString(executionId);
                 XmlDocument doc = ServiceSankhya.Service.call("report.bpms", "bhbpmsnkbpms", body);
                 path = doc.FirstChild.InnerText;
@@ -99,6 +113,23 @@ namespace PortalStoque.API.Controllers
             response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/pdf");
             return response;
 
+        }
+
+        [Route("Task/Anexo")]
+        [HttpGet]
+        public HttpResponseMessage Anexo(string chave, string tipo)
+        {
+            string nomeView = string.Format("{0}.{1}", chave, tipo);
+            string pathDownload = System.Web.Hosting.HostingEnvironment.MapPath(string.Format("~/Temp/Anexos/{0}", nomeView));
+            string pathExecutable = System.Web.Hosting.HostingEnvironment.MapPath("~/Services/WinSCP.exe");
+
+            if (!File.Exists(pathDownload))
+                if (ServiceAnexo.GetFile(pathExecutable, pathDownload, chave))
+                    return Request.CreateResponse(HttpStatusCode.OK);
+                else
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "Anexo não foi encontrado, gentileza entrar em contato com suporte.");
+            else
+                return Request.CreateResponse(HttpStatusCode.OK);
         }
     }
 }

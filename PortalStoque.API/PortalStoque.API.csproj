@@ -103,8 +103,16 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WinSCPnet, Version=1.3.7.7441, Culture=neutral, PublicKeyToken=2271ec4a3c56d0bf, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Services\WinSCPnet.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Services\WinSCP.exe" />
+    <Content Include="Services\WinSCPnet.dll" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Temp\Anexos\README.exe" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -119,6 +127,9 @@
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\UsuarioPortalController.cs" />
+    <Compile Include="Models\Anexos\Anexo.cs" />
+    <Compile Include="Models\Anexos\AnexoRepositorio.cs" />
+    <Compile Include="Models\Anexos\IAnexoRepositorio.cs" />
     <Compile Include="Models\Cits\Cit.cs" />
     <Compile Include="Models\Cits\CitRepositorio.cs" />
     <Compile Include="Models\Cits\ICitRepositorio.cs" />
@@ -164,6 +175,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="ProviderDeTokensDeAcesso .cs" />
+    <Compile Include="Services\ServiceAnexo.cs" />
     <Compile Include="Services\ServiceSankhya.cs" />
     <Compile Include="Services\SWServiceInvoker.cs" />
     <Compile Include="Services\SWServiceInvokerJson.cs" />
@@ -175,6 +187,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Content Include="Services\WinSCP.ini" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

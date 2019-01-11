@@ -1,4 +1,5 @@
-﻿using PortalStoque.API.Models.Cits;
+﻿using PortalStoque.API.Models.Anexos;
+using PortalStoque.API.Models.Cits;
 using PortalStoque.API.Models.Rats;
 using System.Collections.Generic;
 
@@ -34,6 +35,7 @@ namespace PortalStoque.API.Models.Ocorrencias
         public string Produto { get; set; }
         public int idSituacao { get; set; }
         public IEnumerable<Rat> Rat { get; set; }
+        public IEnumerable<Anexo> Anexos { get; set; }
         public Cit Cit { get; set; }
     }
 }
