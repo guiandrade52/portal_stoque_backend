@@ -9,7 +9,7 @@
       <Value Profile="(Default)">portal2505</Value>
     </Setting>
     <Setting Name="SankhyaURL" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">http://10.10.11.4:8380/</Value>
+      <Value Profile="(Default)">10.10.11.4:8380</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -13,7 +13,7 @@ namespace PortalStoque.API.Services
                 SessionOptions sessionOptions = new SessionOptions
                 {
                     Protocol = Protocol.Scp,
-                    HostName = "10.10.11.4",
+                    HostName = Properties.Settings.Default.SankhyaURL.Substring(0, 11).Replace(":", ""),
                     UserName = "sportal",
                     Password = "5p0rtaL@)!&",
                     SshHostKeyFingerprint = "ssh-rsa 2048 60:0d:d3:e8:a1:f3:93:3a:4e:d5:24:89:a9:93:2e:d1"
@@ -58,7 +58,7 @@ namespace PortalStoque.API.Services
                 SessionOptions sessionOptions = new SessionOptions
                 {
                     Protocol = Protocol.Scp,
-                    HostName = "10.10.11.4",
+                    HostName = Properties.Settings.Default.SankhyaURL.Substring(0, 11).Replace(":", ""),
                     UserName = "sportal",
                     Password = "5p0rtaL@)!&",
                     SshHostKeyFingerprint = "ssh-rsa 2048 60:0d:d3:e8:a1:f3:93:3a:4e:d5:24:89:a9:93:2e:d1"

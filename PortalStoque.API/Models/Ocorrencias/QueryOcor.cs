@@ -52,11 +52,11 @@ namespace PortalStoque.API.Models.Ocorrencias
             string _where = "";
             int numero = 0;
 
-            if (!string.IsNullOrWhiteSpace(filter.SearchMultiple))
-                if (int.TryParse(filter.SearchMultiple, out numero))
-                    _where += string.Format(" AND OCO.EXECUTIONID = {0} ", filter.SearchMultiple);
+            if (!string.IsNullOrWhiteSpace(filter.Search))
+                if (int.TryParse(filter.Search, out numero))
+                    _where += string.Format(" AND OCO.EXECUTIONID = {0}", filter.Search);
                 else
-                    _where += string.Format(" AND  PAR.NOMEPARC LIKE ('{0}%') OR OCO.CONTROLE LIKE ('{0}%') ", filter.SearchMultiple);
+                    _where += string.Format(" AND  PAR.NOMEPARC LIKE ('%{0}%') OR OCO.CONTROLE LIKE ('%{0}%') ", filter.Search);
 
 
             if (filter.DateInit != null)

@@ -2,7 +2,7 @@
 {
     public class Filter
     {
-        public string SearchMultiple { get; set; }
+        public string Search { get; set; }
         public string DateInit { get; set; }
         public string DateFinal { get; set; }
         public string Contrato{ get; set; }
@@ -12,7 +12,7 @@
         public string UsuarioPortal { get; set; }
         public string ParceiroAb { get; set; }
         public string ParceiroAt { get; set; }
-        public int Pagina { get; set; }
-        public int TamPag { get; set; }
+        public int ActivePage { get; set; }
+        public int TamPage { get; set; }
     }
 }

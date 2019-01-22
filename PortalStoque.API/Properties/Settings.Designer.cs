@@ -43,7 +43,7 @@ namespace PortalStoque.API.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://10.10.11.4:8380/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("10.10.11.4:8380")]
         public string SankhyaURL {
             get {
                 return ((string)(this["SankhyaURL"]));

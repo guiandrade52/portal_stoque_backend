@@ -29,17 +29,20 @@ namespace PortalStoque.API.Controllers
             var u = new services.UsuarioCorrent();
             string filter = QueryOcor.GetFilter(pFilter, u.GetPermisoes(), u.GetUsuario());
 
-            List<Ocorrencia> Tasks = _OcorRepositorio.GetAll(filter, pFilter.Pagina, pFilter.TamPag).ToList();
-            int TotalOcor = _OcorRepositorio.GetTotalOcor(filter);
+            List<Ocorrencia> tasks = _OcorRepositorio.GetAll(filter, pFilter.ActivePage, pFilter.TamPage).ToList();
+            int totalOcor = _OcorRepositorio.GetTotalOcor(filter);
 
-            foreach (var item in Tasks)
+            foreach (var item in tasks)
             {
                 item.Rat = _RatRepositorio.GetDataRat(item.ExecutionId);
                 item.Cit = _CitRepositorio.GetCit(item.ExecutionId);
                 item.Anexos = _AnexoRepositorio.GetAnexo(item.ExecutionId);
             }
 
-            return Request.CreateResponse(HttpStatusCode.OK, new { Tasks, TotalOcor });
+            // Carrega quantidade de ocorrências
+            var difQuantPaginas = (totalOcor % pFilter.TamPage) > 0 ? 1 : 0;
+            var totalPages = (totalOcor / pFilter.TamPage) + difQuantPaginas;
+            return Request.CreateResponse(HttpStatusCode.OK, new { tasks, totalOcor, totalPages });
         }
 
         [Route("Task/Rat")]
