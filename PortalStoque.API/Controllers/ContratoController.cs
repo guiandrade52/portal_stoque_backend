@@ -17,5 +17,10 @@ namespace PortalStoque.API.Controllers
 
             return Request.CreateResponse(HttpStatusCode.OK, _contratoRepositorio.GetAll(filter));
         }
+
+        public HttpResponseMessage GetEndereco(int contrato)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, _contratoRepositorio.GetDetails(contrato));
+        }
     }
 }

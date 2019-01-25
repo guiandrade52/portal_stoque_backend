@@ -5,6 +5,7 @@ using System.Web.Http;
 
 namespace PortalStoque.API.Controllers
 {
+    [Authorize]
     public class ParceiroAtController : ApiController
     {
         static readonly IParceiroRepositorio _parceiroRepositorio = new ParceiroRepositorio();

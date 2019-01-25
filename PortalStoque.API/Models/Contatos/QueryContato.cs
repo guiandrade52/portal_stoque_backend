@@ -26,5 +26,12 @@ namespace PortalStoque.API.Models.Contatos
             }
             return _where;
         }
+
+        public static string GetFilterSemSerie(int codParc, int contrato)
+        {
+            return string.Format(@"WHERE 1= 1
+                                    AND CTT.CODPARC = {0}
+                                    AND CON.NUMCONTRATO = {1}",codParc, contrato );
+        }
     }
 }

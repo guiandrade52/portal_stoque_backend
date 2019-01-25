@@ -5,5 +5,6 @@ namespace PortalStoque.API.Models.Contratos
     interface IContratoRepositorio
     {
         IEnumerable<Contrato> GetAll(string filter);
+        ContratoDetails GetDetails(int contrato);
     }
 }

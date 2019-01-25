@@ -5,6 +5,7 @@ using System.Web.Http;
 
 namespace PortalStoque.API.Controllers
 {
+    [Authorize]
     public class ContatoController : ApiController
     {
         static readonly IContatoRepositorio _contratoRepositorio = new ContatoRepositorio();
@@ -16,5 +17,13 @@ namespace PortalStoque.API.Controllers
 
             return Request.CreateResponse(HttpStatusCode.OK, _contratoRepositorio.GetAll(filter));
         }
+
+        public HttpResponseMessage GetSemSerie(int contrato, int codParc)
+        {
+            string filter = QueryContato.GetFilterSemSerie(codParc, contrato);
+            return Request.CreateResponse(HttpStatusCode.OK, _contratoRepositorio.GetAll(filter));
+        }
+
+
     }
 }

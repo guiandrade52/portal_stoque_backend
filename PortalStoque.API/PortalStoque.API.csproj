@@ -118,9 +118,11 @@
   <ItemGroup>
     <Compile Include="Controllers\ContatoController.cs" />
     <Compile Include="Controllers\ContratoController.cs" />
+    <Compile Include="Controllers\GrupoProdutoController.cs" />
     <Compile Include="Controllers\OauthController.cs" />
     <Compile Include="Controllers\ParceiroAbController.cs" />
     <Compile Include="Controllers\ParceiroAtController.cs" />
+    <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="Controllers\SerieController.cs" />
     <Compile Include="Controllers\services\UsuarioCorrent.cs" />
     <Compile Include="Controllers\ServicoController.cs" />
@@ -138,9 +140,13 @@
     <Compile Include="Models\Contatos\IContatoRepositorio.cs" />
     <Compile Include="Models\Contatos\QueryContato.cs" />
     <Compile Include="Models\Contratos\Contrato.cs" />
+    <Compile Include="Models\Contratos\ContratoDetails.cs" />
     <Compile Include="Models\Contratos\ContratoRepositorio.cs" />
     <Compile Include="Models\Contratos\QueryContrato.cs" />
     <Compile Include="Models\Contratos\IContratoRepositorio.cs" />
+    <Compile Include="Models\GrupoProdutos\GrupoProduto.cs" />
+    <Compile Include="Models\GrupoProdutos\GrupoProdutoRepositorio.cs" />
+    <Compile Include="Models\GrupoProdutos\IGrupoProduto.cs" />
     <Compile Include="Models\Ocorrencias\Filter.cs" />
     <Compile Include="Models\Ocorrencias\IOcorrenciaRepositorio.cs" />
     <Compile Include="Models\Ocorrencias\Ocorrencia.cs" />
@@ -151,6 +157,9 @@
     <Compile Include="Models\Parceiros\ParceiroRepositorio.cs" />
     <Compile Include="Models\Parceiros\QueryParceiroAt.cs" />
     <Compile Include="Models\Parceiros\QueryParceiroAb.cs" />
+    <Compile Include="Models\Produtos\IProdutoRepositorio.cs" />
+    <Compile Include="Models\Produtos\Produto.cs" />
+    <Compile Include="Models\Produtos\ProdutoRepositorio.cs" />
     <Compile Include="Models\Rats\IRatRepositorio.cs" />
     <Compile Include="Models\Rats\Rat.cs" />
     <Compile Include="Models\Rats\RatRepositorio.cs" />

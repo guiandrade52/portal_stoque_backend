@@ -21,5 +21,14 @@ namespace PortalStoque.API.Models.Series
             }
             return _where;
         }
+
+        public static string GetFilterSerProd(int contrato, int codProd, int codGrupo)
+        {
+            return string.Format(@"	WHERE 1 = 1
+                                    AND EQP.SITUACAO = 'A'
+                                    AND EQP.NUMCONTRATO = {0}
+                                    AND GRU.CODGRUPOPROD = {1}
+                                    AND PRO.CODPROD = {2}", contrato, codGrupo, codProd);           
+        }
     }
 }

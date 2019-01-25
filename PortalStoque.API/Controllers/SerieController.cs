@@ -8,6 +8,7 @@ using System.Web.Http;
 
 namespace PortalStoque.API.Controllers
 {
+    [Authorize]
     public class SerieController : ApiController
     {
         static readonly ISerieRepositorio _serieRepositorio = new SerieRepositorio();
@@ -15,9 +16,12 @@ namespace PortalStoque.API.Controllers
         {
             var u = new services.UsuarioCorrent();
             var user = u.GetPermisoes();
-            string filter = QuerySerie.GetFilter(user, search);
+            return Request.CreateResponse(HttpStatusCode.OK, _serieRepositorio.GetAll(QuerySerie.GetFilter(user, search)));
+        }
 
-            return Request.CreateResponse(HttpStatusCode.OK, _serieRepositorio.GetAll(filter));
+        public HttpResponseMessage GetAll(int contrato, int codProd, int codGrupo)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, _serieRepositorio.GetAll(QuerySerie.GetFilterSerProd(contrato, codProd, codGrupo)));
         }
     }
 }

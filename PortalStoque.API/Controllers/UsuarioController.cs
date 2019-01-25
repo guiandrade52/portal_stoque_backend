@@ -5,7 +5,6 @@ using System.Web.Http;
 
 namespace PortalStoque.API.Controllers
 {
-    [Authorize]
     public class UsuarioController : ApiController
     {
         [HttpPost]

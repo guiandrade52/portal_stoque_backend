@@ -7,7 +7,8 @@ using System.Net.Http;
 using System.Web.Http;
 
 namespace PortalStoque.API.Controllers
-{
+{   
+    [Authorize]
     public class ServicoController : ApiController
     {
         static readonly IServicoRepositorio _servicoRepositorio = new ServicoRepositorio();

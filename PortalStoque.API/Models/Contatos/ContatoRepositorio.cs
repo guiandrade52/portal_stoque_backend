@@ -15,6 +15,7 @@ namespace PortalStoque.API.Models.Contatos
 	                                            CTT.NOMECONTATO AS Nome,
 	                                            CTT.CODCONTATO AS CodContato
                                             FROM TGFCTT CTT
+                                            INNER JOIN TCSCON CON WITH(NOLOCK) ON CON.CODPARC = CTT.CODPARC
                                 {0}", filter);
             try
             {

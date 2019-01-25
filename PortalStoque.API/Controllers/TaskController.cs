@@ -16,7 +16,7 @@ using System.Xml;
 
 namespace PortalStoque.API.Controllers
 {
-
+    [Authorize]
     public class TaskController : ApiController
     {
         static readonly IOcorrenciaRepositorio _OcorRepositorio = new OcorrenciaRepositorio();
