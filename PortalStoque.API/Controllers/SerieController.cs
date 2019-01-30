@@ -23,5 +23,11 @@ namespace PortalStoque.API.Controllers
         {
             return Request.CreateResponse(HttpStatusCode.OK, _serieRepositorio.GetAll(QuerySerie.GetFilterSerProd(contrato, codProd, codGrupo)));
         }
+
+        public HttpResponseMessage GetDetails(string serie)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, _serieRepositorio.GetSerieDetails(serie));
+        }
+
     }
 }

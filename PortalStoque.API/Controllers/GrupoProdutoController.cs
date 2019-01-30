@@ -11,7 +11,7 @@ namespace PortalStoque.API.Controllers
     [Authorize]
     public class GrupoProdutoController : ApiController
     {
-        static readonly IGrupoProduto _grupoProdutoRepositorio = new GrupoProdutoRepositorio();
+        static readonly IGrupoProdutoRepositorio _grupoProdutoRepositorio = new GrupoProdutoRepositorio();
         public HttpResponseMessage GetAll(int contrato)
         {
             return Request.CreateResponse(HttpStatusCode.OK, _grupoProdutoRepositorio.GetAll(contrato));

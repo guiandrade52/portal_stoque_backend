@@ -8,5 +8,6 @@ namespace PortalStoque.API.Models.Series
     interface ISerieRepositorio
     {
         IEnumerable<Serie> GetAll(string filter);
+        SerieDetails GetSerieDetails(string serie);
     }
 }

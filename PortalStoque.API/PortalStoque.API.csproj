@@ -146,7 +146,7 @@
     <Compile Include="Models\Contratos\IContratoRepositorio.cs" />
     <Compile Include="Models\GrupoProdutos\GrupoProduto.cs" />
     <Compile Include="Models\GrupoProdutos\GrupoProdutoRepositorio.cs" />
-    <Compile Include="Models\GrupoProdutos\IGrupoProduto.cs" />
+    <Compile Include="Models\GrupoProdutos\IGrupoProdutoRepositorio.cs" />
     <Compile Include="Models\Ocorrencias\Filter.cs" />
     <Compile Include="Models\Ocorrencias\IOcorrenciaRepositorio.cs" />
     <Compile Include="Models\Ocorrencias\Ocorrencia.cs" />
@@ -166,6 +166,7 @@
     <Compile Include="Models\Series\ISerieRepositorio.cs" />
     <Compile Include="Models\Series\QuerySerie.cs" />
     <Compile Include="Models\Series\Serie.cs" />
+    <Compile Include="Models\Series\SerieDetails.cs" />
     <Compile Include="Models\Series\SerieRepositorio.cs" />
     <Compile Include="Models\Servicos\IServicoRepositorio.cs" />
     <Compile Include="Models\Servicos\QueryServico.cs" />

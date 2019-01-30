@@ -8,21 +8,21 @@ using System.Web;
 
 namespace PortalStoque.API.Models.GrupoProdutos
 {
-    public class GrupoProdutoRepositorio : IGrupoProduto
+    public class GrupoProdutoRepositorio : IGrupoProdutoRepositorio
     {
         public IEnumerable<GrupoProduto> GetAll(int contrato)
         {
             string query = string.Format(@"SELECT 
                                                 DISTINCT 
-                                                PRO.CODGRUPOPROD AS CodGrupo,
-                                                GRU.DESCRGRUPOPROD	AS DescGrupo
-	                                            FROM TGFPRO PRO 
-                                            INNER JOIN TGFGRU GRU  WITH(NOLOCK) ON GRU.CODGRUPOPROD = PRO.CODGRUPOPROD
-                                            WHERE PRO.CODPROD IN (
-                                                                    SELECT CODPROD 
-                                                                        FROM BH_FTLEQP EQP 
-						                                            WHERE EQP.NUMCONTRATO = {0}
-                                                                )", contrato);
+                                                PRO.CODGRUPOPROD AS CodGrupo
+                                               ,GRU.DESCRGRUPOPROD	AS DescGrupo									
+                                        FROM TGFPRO PRO 
+                                        INNER JOIN TGFGRU GRU  WITH(NOLOCK) ON GRU.CODGRUPOPROD = PRO.CODGRUPOPROD
+                                        LEFT JOIN BH_FTLEQP EQP WITH(NOLOCK) ON EQP.CODPROD = PRO.CODPROD
+                                        WHERE 1 = 1
+                                        AND EQP.SITUACAO = 'A'
+                                        AND EQP.NUMCONTRATO = {0}
+                                        ORDER BY DescGrupo", contrato);
 
             try
             {

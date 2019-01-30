@@ -8,6 +8,6 @@ namespace PortalStoque.API.Models.Series
     public class Serie
     {
         public string Controle { get; set; }
-        public string DescProd { get; set; }
+        public string DescrProd { get; set; }
     }
 }

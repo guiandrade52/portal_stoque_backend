@@ -5,7 +5,7 @@ using System.Web;
 
 namespace PortalStoque.API.Models.GrupoProdutos
 {
-    interface IGrupoProduto
+    interface IGrupoProdutoRepositorio
     {
         IEnumerable<GrupoProduto> GetAll(int contrato);
     }

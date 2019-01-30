@@ -22,7 +22,8 @@ namespace PortalStoque.API.Models.Produtos
 	                                        WHERE 1 = 1
 	                                        AND EQP.SITUACAO = 'A'
 	                                        AND EQP.NUMCONTRATO = {0}
-	                                        AND GRU.CODGRUPOPROD = {1}", contrato, codGrupo);
+	                                        AND GRU.CODGRUPOPROD = {1}
+                                            ORDER BY PRO.DESCRPROD", contrato, codGrupo);
 
             try
             {
