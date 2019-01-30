@@ -12,11 +12,14 @@ namespace PortalStoque.API.Models.Contatos
         public IEnumerable<Contato> GetAll(string filter)
         {
             string query = string.Format(@"SELECT TOP 100
-	                                            CTT.NOMECONTATO AS Nome,
-	                                            CTT.CODCONTATO AS CodContato
-                                            FROM TGFCTT CTT
-                                            INNER JOIN TCSCON CON WITH(NOLOCK) ON CON.CODPARC = CTT.CODPARC
-                                {0}", filter);
+	                                                CTT.NOMECONTATO AS Nome,
+	                                                CTT.CODCONTATO AS CodContato,
+	                                                CTT.EMAIL,
+	                                                CTT.TELEFONE
+                                                FROM TGFCTT CTT
+                                                INNER JOIN TCSCON CON WITH(NOLOCK) ON CON.CODPARC = CTT.CODPARC
+                                                {0}
+                                                ORDER BY CTT.NOMECONTATO", filter);
             try
             {
                 using (var _Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["principal"].ConnectionString))
