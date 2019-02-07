@@ -11,7 +11,7 @@ namespace PortalStoque.API.Models.Series
     {
         public IEnumerable<Serie> GetAll(string filter)
         {
-            string query = string.Format(@"SELECT			 
+            string query = string.Format(@"SELECT TOP 100			 
 		                                    EQP.CONTROLE AS Controle,
 		                                    PRO.DESCRPROD AS DescrProd
 	                                    FROM TGFPRO PRO

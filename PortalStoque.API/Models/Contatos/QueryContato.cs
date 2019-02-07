@@ -33,5 +33,12 @@ namespace PortalStoque.API.Models.Contatos
                                     AND CTT.CODPARC = {0}
                                     AND CON.NUMCONTRATO = {1}",codParc, contrato );
         }
+
+        public static string getFilterComSerie(string serie)
+        {
+            return string.Format(@"	WHERE 1 = 1
+                                    AND EQP.SITUACAO = 'A'
+                                    AND EQP.CONTROLE = '{0}'", serie);
+        }
     }
 }

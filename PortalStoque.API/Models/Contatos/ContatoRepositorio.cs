@@ -32,5 +32,50 @@ namespace PortalStoque.API.Models.Contatos
                 throw new ArgumentException("Erro ao tentar recuperar Contato. " + e.Message);
             }
         }
+        public IEnumerable<Contato> GetComContrato(string filter)
+        {
+            string query = string.Format(@"SELECT TOP 100
+	                                                CTT.NOMECONTATO AS Nome,
+	                                                CTT.CODCONTATO AS CodContato,
+	                                                CTT.EMAIL,
+	                                                CTT.TELEFONE
+                                                FROM TGFCTT CTT
+                                                INNER JOIN TCSCON CON WITH(NOLOCK) ON CON.CODPARC = CTT.CODPARC
+                                                {0}
+                                                ORDER BY CTT.NOMECONTATO", filter);
+            try
+            {
+                using (var _Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["principal"].ConnectionString))
+                {
+                    return _Conexao.Query<Contato>(query).ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                throw new ArgumentException("Erro ao tentar recuperar Contato. " + e.Message);
+            }
+        }
+        public IEnumerable<Contato> GetComSerie(string filter)
+        {
+            string query = string.Format(@"SELECT   CTT.CODCONTATO AS CodContato
+	                                                ,CTT.NOMECONTATO AS Nome
+	                                                ,CTT.TELEFONE AS Telefone
+	                                                ,CTT.EMAIL AS Email
+	                                                ,EQP.CONTROLE
+                                                FROM BH_FTLEQP EQP
+	                                                INNER JOIN TGFCTT CTT WITH(NOLOCK) ON CTT.CODPARC = EQP.CODPARC    
+                                               {0}", filter);
+            try
+            {
+                using (var _Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["principal"].ConnectionString))
+                {
+                    return _Conexao.Query<Contato>(query).ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                throw new ArgumentException("Erro ao tentar recuperar Contato. " + e.Message);
+            }
+        }
     }
 }

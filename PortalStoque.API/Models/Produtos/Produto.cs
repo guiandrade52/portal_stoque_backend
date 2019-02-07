@@ -6,5 +6,6 @@
         public string DescProd{ get; set; }
         public int CodGrupo { get; set; }
         public int Contrato { get; set; }
+        public string DescrGrupo { get; set; }
     }
 }

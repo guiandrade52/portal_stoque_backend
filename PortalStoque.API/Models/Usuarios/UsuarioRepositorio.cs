@@ -74,6 +74,7 @@ namespace PortalStoque.API.Models.Usuarios
                 {
                     return conexao.Query<Permisoes>
                         (@"SELECT 
+                            PRTL.IDUSUPRTL as IdUsuario,
                             PRTL.ALTPSW AS AltPassword,
                             PRTL.PRFLUSU AS Perfil,
                             PRTL.RGSTOCOR AS RgtOcorrencia,

@@ -3,7 +3,7 @@ using WinSCP;
 
 namespace PortalStoque.API.Services
 {
-    public class ServiceAnexo
+    public class AnexoService
     {
         public static string TransferFile(string executablepath, string filepath)
         {

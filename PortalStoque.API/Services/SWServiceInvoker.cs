@@ -290,7 +290,7 @@ namespace PortalStoque.API.Services
                 buf.Append(Properties.Settings.Default.SankhyaURL + "/bhbpmsnkbpms/report.bpms?mgeSession=" + sessionID);
             }
 
-            Uri u = new Uri(buf.ToString());
+            Uri u = new Uri(string.Format("http://{0}", buf.ToString()));
 
 
             var connection = (HttpWebRequest)WebRequest.Create(u);

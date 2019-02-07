@@ -4,6 +4,6 @@ namespace PortalStoque.API.Models.Produtos
 {
     interface IProdutoRepositorio
     {
-        IEnumerable<Produto> GetAll(int contrato, int codGrupo);
+        IEnumerable<Produto> GetAll(string filter);
     }
 }

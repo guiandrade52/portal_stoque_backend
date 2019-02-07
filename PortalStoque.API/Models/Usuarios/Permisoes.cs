@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace PortalStoque.API.Models.Usuarios
+﻿namespace PortalStoque.API.Models.Usuarios
 {
-    public class Permisoes
+    public class Permisoes : Usuario
     {
         public char AltPassword { get; set; }
         public string ClienteAb { get; set; }

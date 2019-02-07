@@ -6,7 +6,7 @@ namespace PortalStoque.API.Models.Series
     {
         public static string GetFilter(Permisoes permisao, string search)
         {
-            string _where = "WHERE EQP.CONTROLE IS NOT NULL ";
+            string _where = "WHERE EQP.CONTROLE IS NOT NULL AND EQP.SITUACAO = 'A'";
             if (!string.IsNullOrEmpty(search))
             {
                 _where = string.Format("{0} AND EQP.CONTROLE LIKE '{1}%' ", _where, search);

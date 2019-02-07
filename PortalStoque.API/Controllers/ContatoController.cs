@@ -18,10 +18,16 @@ namespace PortalStoque.API.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, _contratoRepositorio.GetAll(filter));
         }
 
-        public HttpResponseMessage GetSemSerie(int contrato, int codParc)
+        public HttpResponseMessage GetComContrato(int contrato, int codParc)
         {
             string filter = QueryContato.GetFilterSemSerie(codParc, contrato);
-            return Request.CreateResponse(HttpStatusCode.OK, _contratoRepositorio.GetAll(filter));
+            return Request.CreateResponse(HttpStatusCode.OK, _contratoRepositorio.GetComContrato(filter));
+        }
+
+        public HttpResponseMessage GetComSerie(string serie)
+        {
+            string filter = QueryContato.getFilterComSerie(serie);
+            return Request.CreateResponse(HttpStatusCode.OK, _contratoRepositorio.GetComSerie(filter));
         }
 
 

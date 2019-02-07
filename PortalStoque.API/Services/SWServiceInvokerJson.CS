@@ -312,7 +312,7 @@ namespace PortalStoque.API.Services
 
             buf.Append("&preventTransform=false");
 
-            Uri u = new Uri(buf.ToString());
+            Uri u = new Uri(string.Format("http://{0}", buf.ToString()));
 
 
             var connection = (HttpWebRequest)WebRequest.Create(u);
