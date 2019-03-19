@@ -1,0 +1,115 @@
+
+Log Entry : 11:30:34 segunda-feira, 11 de março de 2019
+  :
+  :The SELECT permission was denied on the object 'TGFCTT', database 'sankhya_treina', schema 'sankhya'.
+-------------------------------
+
+Log Entry : 11:31:39 segunda-feira, 11 de março de 2019
+  :
+  :The SELECT permission was denied on the object 'TGFCTT', database 'sankhya_treina', schema 'sankhya'.
+-------------------------------
+
+Log Entry : 11:36:28 segunda-feira, 11 de março de 2019
+  :
+  :Incorrect syntax near 'WHEREs'.
+-------------------------------
+
+Log Entry : 11:37:44 segunda-feira, 11 de março de 2019
+  :
+  :Incorrect syntax near 'WHEREs'.
+-------------------------------
+
+Log Entry : 11:40:16 segunda-feira, 11 de março de 2019
+  :
+  :Incorrect syntax near 'WHEREs'.
+-------------------------------
+
+Log Entry : 11:55:22 segunda-feira, 11 de março de 2019
+  :
+  :Incorrect syntax near '('.
+Incorrect syntax near the keyword 'FOR'.
+Incorrect syntax near the keyword 'FOR'.
+-------------------------------
+
+Log Entry : 15:27:05 segunda-feira, 11 de março de 2019
+  :
+  :Incorrect syntax near the keyword 'DISTINCT'.
+Incorrect syntax near the keyword 'with'. If this statement is a common table expression, an xmlnamespaces clause or a change tracking context clause, the previous statement must be terminated with a semicolon.
+-------------------------------
+
+Log Entry : 15:31:54 segunda-feira, 18 de março de 2019
+  :
+  :Cannot open database "sankhya_treina" requested by the login. The login failed.
+Login failed for user 'portal.stoque'.
+-------------------------------
+
+Log Entry : 15:42:32 segunda-feira, 18 de março de 2019
+  :
+  :Cannot open database "sankhya_treina" requested by the login. The login failed.
+Login failed for user 'portal.stoque'.
+-------------------------------
+
+Log Entry : 15:43:54 segunda-feira, 18 de março de 2019
+  :
+  :Incorrect syntax near '00'.
+-------------------------------
+
+Log Entry : 15:44:11 segunda-feira, 18 de março de 2019
+  :
+  :Incorrect syntax near '00'.
+-------------------------------
+
+Log Entry : 15:45:55 segunda-feira, 18 de março de 2019
+  :
+  :Incorrect syntax near '00'.
+-------------------------------
+
+Log Entry : 15:46:06 segunda-feira, 18 de março de 2019
+  :
+  :Incorrect syntax near '00'.
+-------------------------------
+
+Log Entry : 15:47:18 segunda-feira, 18 de março de 2019
+  :
+  :The conversion of a varchar data type to a datetime data type resulted in an out-of-range value.
+-------------------------------
+
+Log Entry : 15:47:42 segunda-feira, 18 de março de 2019
+  :
+  :Incorrect syntax near '00'.
+-------------------------------
+
+Log Entry : 15:48:27 segunda-feira, 18 de março de 2019
+  :
+  :The conversion of a varchar data type to a datetime data type resulted in an out-of-range value.
+-------------------------------
+
+Log Entry : 15:53:25 segunda-feira, 18 de março de 2019
+  :
+  :The conversion of a varchar data type to a datetime data type resulted in an out-of-range value.
+-------------------------------
+
+Log Entry : 16:04:33 segunda-feira, 18 de março de 2019
+  :
+  :The conversion of a varchar data type to a datetime data type resulted in an out-of-range value.
+-------------------------------
+
+Log Entry : 16:06:19 segunda-feira, 18 de março de 2019
+  :
+  :The conversion of a varchar data type to a datetime data type resulted in an out-of-range value.
+-------------------------------
+
+Log Entry : 16:06:27 segunda-feira, 18 de março de 2019
+  :
+  :Incorrect syntax near '00'.
+-------------------------------
+
+Log Entry : 16:10:58 segunda-feira, 18 de março de 2019
+  :
+  :The conversion of a varchar data type to a datetime data type resulted in an out-of-range value.
+-------------------------------
+
+Log Entry : 08:44:27 terça-feira, 19 de março de 2019
+  :
+  :Incorrect syntax near ','.
+-------------------------------

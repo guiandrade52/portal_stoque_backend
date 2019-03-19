@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using PortalStoque.API.Controllers.services;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -11,7 +12,7 @@ namespace PortalStoque.API.Models.Contatos
     {
         public IEnumerable<Contato> GetAll(string filter)
         {
-            string query = string.Format(@"SELECT TOP 100
+            string query = string.Format(@"SELECT DISTINCT TOP 100
 	                                                CTT.NOMECONTATO AS Nome,
 	                                                CTT.CODCONTATO AS CodContato,
 	                                                CTT.EMAIL,
@@ -27,9 +28,10 @@ namespace PortalStoque.API.Models.Contatos
                     return _Conexao.Query<Contato>(query).ToList();
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                throw new ArgumentException("Erro ao tentar recuperar Contato. " + e.Message);
+                Logger.writeLog(ex.Message);
+                throw ex;
             }
         }
         public IEnumerable<Contato> GetComContrato(string filter)
@@ -50,9 +52,10 @@ namespace PortalStoque.API.Models.Contatos
                     return _Conexao.Query<Contato>(query).ToList();
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                throw new ArgumentException("Erro ao tentar recuperar Contato. " + e.Message);
+                Logger.writeLog(ex.Message);
+                throw ex;
             }
         }
         public IEnumerable<Contato> GetComSerie(string filter)
@@ -72,9 +75,10 @@ namespace PortalStoque.API.Models.Contatos
                     return _Conexao.Query<Contato>(query).ToList();
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                throw new ArgumentException("Erro ao tentar recuperar Contato. " + e.Message);
+                Logger.writeLog(ex.Message);
+                throw ex;
             }
         }
     }

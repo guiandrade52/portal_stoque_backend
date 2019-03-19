@@ -1,7 +1,5 @@
 ﻿using PortalStoque.API.Models.Produtos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using PortalStoque.API.Models.Usuarios;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -12,10 +10,12 @@ namespace PortalStoque.API.Controllers
     public class ProdutoController : ApiController
     {
         static readonly IProdutoRepositorio _produtoRepositorio = new ProdutoRepositorio();
-        public HttpResponseMessage GetAll(int contrato, int? codGrupo)
+        public HttpResponseMessage GetAll(int codGrupo, int? contrato)
         {
-
-            return Request.CreateResponse(HttpStatusCode.OK, _produtoRepositorio.GetAll(QueryProduto.GetFilter(contrato, codGrupo)));
+            var u = new services.UsuarioCorrent();
+            Permisoes permisoes = u.GetPermisoes();
+            string filter = QueryProduto.GetFilter(codGrupo, contrato, permisoes);
+            return Request.CreateResponse(HttpStatusCode.OK, _produtoRepositorio.GetAll(filter));
         }
     }
 }

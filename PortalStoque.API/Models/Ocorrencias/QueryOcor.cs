@@ -17,8 +17,8 @@ namespace PortalStoque.API.Models.Ocorrencias
                     _where = string.Format("{0} {1}", _where, Filter(filter, permisao));
                     break;
                 case "C":// Visualiza somente ocorrências do contrato previamente cadastrado
-                    if (!string.IsNullOrEmpty(permisao.ClienteAb) && !string.IsNullOrEmpty(permisao.NumContrato))
-                        _where = string.Format("{0} AND OCO.CODPARC IN ({1}) AND OCO.NUMCONTRATO IN({2}) {3}", _where, permisao.ClienteAb, permisao.NumContrato, Filter(filter, permisao));
+                    if (!string.IsNullOrEmpty(permisao.ClienteAb) && !string.IsNullOrEmpty(permisao.Contratos))
+                        _where = string.Format("{0} AND OCO.CODPARC IN ({1}) AND OCO.NUMCONTRATO IN({2}) {3}", _where, permisao.ClienteAb, permisao.Contratos, Filter(filter, permisao));
                     else
                         _where = "AND OCO.CODPARC IN (-1)";
                     break;

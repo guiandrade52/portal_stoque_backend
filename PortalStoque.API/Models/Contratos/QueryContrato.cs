@@ -17,8 +17,8 @@ namespace PortalStoque.API.Models.Contratos
 
             if (permisao.Perfil == "C" || permisao.Perfil == "CO")
             {
-                if (!string.IsNullOrEmpty(permisao.ClienteAb) && !string.IsNullOrEmpty(permisao.NumContrato))
-                    _where = string.Format("{0} AND PAR.CODPARC IN ({1}) AND CON.NUMCONTRATO IN({2}) {3}", _where, permisao.ClienteAb, permisao.NumContrato, search);
+                if (!string.IsNullOrEmpty(permisao.ClienteAb) && !string.IsNullOrEmpty(permisao.Contratos))
+                    _where = string.Format("{0} AND PAR.CODPARC IN ({1}) AND CON.NUMCONTRATO IN({2}) {3}", _where, permisao.ClienteAb, permisao.Contratos, search);
                 else
                     _where = "AND PAR.CODPARC IN (-1)";
             }

@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using Dapper;
+using PortalStoque.API.Controllers.services;
 
 namespace PortalStoque.API.Models.Ocorrencias
 {
     public class OcorrenciaRepositorio : IOcorrenciaRepositorio
     {
-        private List<Ocorrencia> ocorrencias = new List<Ocorrencia>();
+        private List<Ocorrencia> Ocorrencias = new List<Ocorrencia>();
         public IEnumerable<Ocorrencia> GetAll(string filter, int pagina, int tamPag)
         {
             var sql = string.Format(@"
@@ -71,9 +72,9 @@ namespace PortalStoque.API.Models.Ocorrencias
                 }
 
             }
-            catch (System.Exception)
+            catch (Exception e)
             {
-                throw new ArgumentException("Erro ao Recuperar dados.");
+                throw new ArgumentException("Erro ao Recuperar dados."+ e.Message);
             }
         }
         public int GetTotalOcor(string filter)
@@ -105,16 +106,17 @@ namespace PortalStoque.API.Models.Ocorrencias
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                throw new ArgumentException("Erro ao contar Ocorrências" + e.Message);
+                Logger.writeLog(ex.Message);
+                throw ex;
             }
             return ret;
         }
-
         public Ocorrencia Get(int id)
         {
             throw new NotImplementedException();
         }
+
     }
 }

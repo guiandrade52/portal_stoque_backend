@@ -16,7 +16,6 @@ namespace PortalStoque.API.Models.Produtos
 			                                        ,PRO.CODPROD AS CodProd
 			                                        ,PRO.CODGRUPOPROD AS CodGrupo
                                                     ,GRU.DESCRGRUPOPROD AS DescrGrupo
-			                                        ,EQP.NUMCONTRATO AS Contrato	
 	                                        FROM TGFPRO PRO
 	                                        INNER JOIN TGFGRU GRU WITH(NOLOCK) ON GRU.CODGRUPOPROD = PRO.CODGRUPOPROD
 	                                        INNER JOIN BH_FTLEQP EQP WITH(NOLOCK) ON EQP.CODPROD = PRO.CODPROD

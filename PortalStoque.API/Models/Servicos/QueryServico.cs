@@ -21,13 +21,13 @@ namespace PortalStoque.API.Models.Servicos
 
             if (permisao.Perfil == "C" || permisao.Perfil == "CO")
             {
-                if (!string.IsNullOrEmpty(permisao.ClienteAb) && !string.IsNullOrEmpty(permisao.NumContrato))
+                if (!string.IsNullOrEmpty(permisao.ClienteAb) && !string.IsNullOrEmpty(permisao.Contratos))
                     _where = string.Format(@"SELECT DISTINCT  
 	                                            PRO.CODPROD AS CodServico,
 	                                            PRO.DESCRPROD AS Nome
                                              FROM AD_STOSRVCONT CONT
                                              INNER JOIN TGFPRO PRO ON CONT.CODPROD = PRO.CODPROD
-                                            WHERE CONT.NUMCONTRATO IN({0})", permisao.NumContrato);
+                                            WHERE CONT.NUMCONTRATO IN({0})", permisao.Contratos);
             }
 
             return _where;

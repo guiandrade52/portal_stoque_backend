@@ -117,9 +117,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AnexoController.cs" />
+    <Compile Include="Controllers\ChartsController.cs" />
     <Compile Include="Controllers\CitController.cs" />
     <Compile Include="Controllers\ContatoController.cs" />
     <Compile Include="Controllers\ContratoController.cs" />
+    <Compile Include="Controllers\MailsController.cs" />
     <Compile Include="Controllers\GrupoProdutoController.cs" />
     <Compile Include="Controllers\OauthController.cs" />
     <Compile Include="Controllers\ParceiroAbController.cs" />
@@ -127,6 +129,13 @@
     <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="Controllers\RatController.cs" />
     <Compile Include="Controllers\SerieController.cs" />
+    <Compile Include="Models\Charts\Charts.cs" />
+    <Compile Include="Models\Charts\ChartsRepositorio.cs" />
+    <Compile Include="Models\Charts\IChartsRepositorio.cs" />
+    <Compile Include="Models\Formularios\NovoColaborador.cs" />
+    <Compile Include="Models\Mail\IMailRepositorio.cs" />
+    <Compile Include="Models\Mail\MailRepositorio.cs" />
+    <Compile Include="Services\Logger.cs" />
     <Compile Include="Controllers\services\UsuarioCorrent.cs" />
     <Compile Include="Controllers\ServicoController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
@@ -150,6 +159,7 @@
     <Compile Include="Models\GrupoProdutos\GrupoProduto.cs" />
     <Compile Include="Models\GrupoProdutos\GrupoProdutoRepositorio.cs" />
     <Compile Include="Models\GrupoProdutos\IGrupoProdutoRepositorio.cs" />
+    <Compile Include="Models\GrupoProdutos\QueryGrupoProduto.cs" />
     <Compile Include="Models\OcorNews\IOcorNewsRepositorio.cs" />
     <Compile Include="Models\OcorNews\Ocor.cs" />
     <Compile Include="Models\OcorNews\OcorNewsRepositorio.cs" />

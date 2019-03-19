@@ -10,7 +10,7 @@ namespace PortalStoque.API.Models.GrupoProdutos
 {
     public class GrupoProdutoRepositorio : IGrupoProdutoRepositorio
     {
-        public IEnumerable<GrupoProduto> GetAll(int contrato)
+        public IEnumerable<GrupoProduto> GetAll(string filter)
         {
             string query = string.Format(@"SELECT 
                                                 DISTINCT 
@@ -19,10 +19,8 @@ namespace PortalStoque.API.Models.GrupoProdutos
                                         FROM TGFPRO PRO 
                                         INNER JOIN TGFGRU GRU  WITH(NOLOCK) ON GRU.CODGRUPOPROD = PRO.CODGRUPOPROD
                                         LEFT JOIN BH_FTLEQP EQP WITH(NOLOCK) ON EQP.CODPROD = PRO.CODPROD
-                                        WHERE 1 = 1
-                                        AND EQP.SITUACAO = 'A'
-                                        AND EQP.NUMCONTRATO = {0}
-                                        ORDER BY DescGrupo", contrato);
+                                        {0}
+                                        ORDER BY DescGrupo", filter);
 
             try
             {

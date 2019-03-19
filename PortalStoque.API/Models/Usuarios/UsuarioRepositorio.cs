@@ -1,11 +1,13 @@
 ﻿using Dapper;
+using PortalStoque.API.Controllers.services;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
 using System.Web;
-using System.Web.Caching;
+using System.Web.Http;
 
 namespace PortalStoque.API.Models.Usuarios
 {
@@ -29,15 +31,16 @@ namespace PortalStoque.API.Models.Usuarios
 	                            PRTL.LGNUSU AS UserName
 	                            FROM AD_USUPRTL PRTL
 	                            INNER JOIN TGFCTT CTT WITH(NOLOCK) ON CTT.CODCONTATO = PRTL.CODCONTATO AND CTT.CODPARC = PRTL.CODPARC
-                                WHERE PRTL.LGNUSU = @UserName AND PRTL.PSWUSU = @Password", new { login.UserName, login.Password }).First();
+                                WHERE PRTL.LGNUSU = @UserName AND PRTL.PSWUSU = @Password", new { login.UserName, login.Password }).FirstOrDefault();
                     }
                     else
                         return null;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return null;
+                Logger.writeLog(ex.Message);
+                throw ex;
             }
         }
 
@@ -53,15 +56,17 @@ namespace PortalStoque.API.Models.Usuarios
 	                            CTT.NOMECONTATO AS Nome,
 	                            PRTL.LGNUSU AS Login,
 	                            CTT.EMAIL AS Email,
-                                CTT.TELEFONE AS Telefone
+                                CTT.TELEFONE AS Telefone,
+                                CTT.CODCONTATO as CodContato
 	                            FROM AD_USUPRTL PRTL
 	                            INNER JOIN TGFCTT CTT WITH(NOLOCK) ON CTT.CODCONTATO = PRTL.CODCONTATO AND CTT.CODPARC = PRTL.CODPARC
                                 WHERE PRTL.IDUSUPRTL = @id", new { id }).First();
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                throw new ArgumentException("Erro ao tentar recuperar Usuário. " + e.Message);
+                Logger.writeLog(ex.Message);
+                throw ex;
             }
         }
         
@@ -81,7 +86,8 @@ namespace PortalStoque.API.Models.Usuarios
                             STUFF((SELECT ', ' + RTRIM(CON.CODPARCAT) AS [text()]
                             FROM AD_USUPRTLCON CON
                             WHERE CON.IDUSUPRTL = PRTL.IDUSUPRTL
-                            FOR XML PATH('')), 1, 1, '' ) AS ClienteAt,
+                            FOR XML PATH
+                            ('')), 1, 1, '' ) AS ClienteAt,
                             STUFF((SELECT ', ' + RTRIM(CON.CODPARCAB) AS [text()]
                             FROM AD_USUPRTLCON CON
                             WHERE CON.IDUSUPRTL = PRTL.IDUSUPRTL
@@ -89,14 +95,15 @@ namespace PortalStoque.API.Models.Usuarios
                             STUFF((SELECT ', ' + RTRIM(CON.NUMCONTRATO) AS [text()]
                             FROM AD_USUPRTLCON CON
                             WHERE CON.IDUSUPRTL = PRTL.IDUSUPRTL
-                            FOR XML PATH('')), 1, 1, '' ) AS NumContrato
+                            FOR XML PATH('')), 1, 1, '' ) AS Contratos
                             FROM AD_USUPRTL PRTL
                             WHERE PRTL.IDUSUPRTL = @id", new { id }).First();
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                throw new ArgumentException("Erro ao tentar recuperar Permissões do Usuário. " + e.Message);
+                Logger.writeLog(ex.Message);
+                throw ex;
             }
         }
 
@@ -109,9 +116,10 @@ namespace PortalStoque.API.Models.Usuarios
                     return conexao.Query<Usuario>(filter).ToList();
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                throw new ArgumentException("Erro ao tentar recuperar Usuários. " + e.Message);
+                Logger.writeLog(ex.Message);
+                throw ex;
             }
         }
     }

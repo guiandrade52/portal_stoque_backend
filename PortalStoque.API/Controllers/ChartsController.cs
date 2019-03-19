@@ -1,0 +1,67 @@
+﻿using PortalStoque.API.Models.Charts;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+
+namespace PortalStoque.API.Controllers
+{
+    [Authorize]
+    public class ChartsController : ApiController
+    {
+        static readonly IChartsRepositorio _ChartsRepositorio = new ChartsRepositorio();
+        public class ChartResult
+        {
+            public int Ano { get; set; }
+            public int Mes { get; set; }
+            public int Total { get; set; }
+            public int TotalAbertas { get; set; }
+            public int TotalFechadas { get; set; }
+        };
+
+        [HttpGet]
+        public HttpResponseMessage Charts()
+        {
+            var u = new services.UsuarioCorrent();
+            var permisoes = u.GetPermisoes();
+            var user = u.GetUsuario();
+
+            DateTime dtinicial = DateTime.Now;
+            List<ChartResult> data = new List<ChartResult>();
+            for (int i = 0; i < 12; i++)
+            {
+                dtinicial = new DateTime(dtinicial.Year, dtinicial.Month, 1).AddMonths(-1);
+                DateTime dtfinal = dtinicial.Month != 12
+                    ? new DateTime(dtinicial.Year, dtinicial.Month + 1, 1).AddDays(-1)
+                    : new DateTime(dtinicial.Year + 1, dtinicial.Month - 11, 1).AddDays(-1);
+
+                Charts chart = new Charts
+                {
+                    DtInicio = string.Format("{0}/{1}/{2}", dtinicial.Month, dtinicial.Day, dtinicial.Year),
+                    DtFinal = string.Format("{0}/{1}/{2}", dtfinal.Month, dtfinal.Day, dtfinal.Year),
+                    CodContato = user.CodContato,
+                    Contratos = permisoes.Contratos
+                };
+
+                data.Add(new ChartResult { Mes = dtinicial.Month, Ano = dtinicial.Year, Total = _ChartsRepositorio.GetChartLine(chart) });
+            }
+
+            Charts charts = new Charts
+            {
+                CodContato = user.CodContato,
+                Contratos = permisoes.Contratos,
+                Situacao = "AND OCO.SITUACAO IN (19,23,15,1,3,10,4,14,7)"
+            };
+
+            int totalAberto = _ChartsRepositorio.GetChartRound(charts);
+            charts.Situacao = "AND OCO.SITUACAO IN (8,6,9,21,20,22,2,17,18,16,13)";
+            int totalFechadas = _ChartsRepositorio.GetChartRound(charts);
+
+            data.Add(new ChartResult { TotalAbertas = totalAberto, TotalFechadas = totalFechadas});
+
+            return Request.CreateResponse(HttpStatusCode.OK,  data);
+        }
+    }
+}
