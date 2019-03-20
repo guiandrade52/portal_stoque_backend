@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PortalStoque.API.Controllers.services;
+using System;
 using WinSCP;
 
 namespace PortalStoque.API.Services
@@ -44,9 +45,10 @@ namespace PortalStoque.API.Services
 
                 return "success";
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return "failed";
+                Logger.writeLog(ex.Message);
+                throw ex;
             }
         }
 

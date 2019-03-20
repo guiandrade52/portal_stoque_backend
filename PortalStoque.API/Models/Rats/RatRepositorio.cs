@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using PortalStoque.API.Controllers.services;
 using PortalStoque.API.Services;
 using System;
 using System.Collections.Generic;
@@ -31,9 +32,10 @@ namespace PortalStoque.API.Models.Rats
                     return _Conexao.Query<Rat>(sql).ToList();
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                throw new ArgumentException("Erro ao tentar recuperar RAT " + e.Message);
+                Logger.writeLog(ex.Message);
+                throw ex;
             }
         }
 

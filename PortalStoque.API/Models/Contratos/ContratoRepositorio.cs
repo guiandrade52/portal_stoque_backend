@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using PortalStoque.API.Controllers.services;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -26,9 +27,10 @@ namespace PortalStoque.API.Models.Contratos
                     return _Conexao.Query<Contrato>(query).ToList();
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                throw new ArgumentException("Erro ao tentar recuperar Contratos. " + e.Message);
+                Logger.writeLog(ex.Message);
+                throw ex;
             }
         }
 
@@ -64,9 +66,10 @@ namespace PortalStoque.API.Models.Contratos
                     return _Conexao.Query<ContratoDetails>(query).First();
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                throw new ArgumentException("Erro ao tentar recuperar detalhes do contrato. " + e.Message);
+                Logger.writeLog(ex.Message);
+                throw ex;
             }
         }
     }

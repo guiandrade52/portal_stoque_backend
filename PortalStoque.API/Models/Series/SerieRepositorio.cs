@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using PortalStoque.API.Controllers.services;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -26,9 +27,10 @@ namespace PortalStoque.API.Models.Series
                     return _Conexao.Query<Serie>(query).ToList();
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                throw new ArgumentException("Erro ao tentar recuperar Séries. " + e.Message);
+                Logger.writeLog(ex.Message);
+                throw ex;
             }
         }
 
@@ -77,9 +79,10 @@ namespace PortalStoque.API.Models.Series
                     return _Conexao.Query<SerieDetails>(query).First();
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                throw new ArgumentException("Erro ao tentar recuperar detalhe da séries. " + e.Message);
+                Logger.writeLog(ex.Message);
+                throw ex;
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PortalStoque.API.Controllers.services;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -76,8 +77,9 @@ namespace PortalStoque.API.Services
 
                 callServiceLogin(conn, null, "MobileLoginSP.logout");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Logger.writeLog(ex.Message);
                 //e.printStackTrace(); // pode ser ignorado
             }
         }
@@ -91,6 +93,7 @@ namespace PortalStoque.API.Services
             if (!"1".Equals(status) && !silentMode)
             {
                 String msg = getChildNode("statusMessage", sr).Value;
+                Logger.writeLog(msg);
                 throw new Exception("Error");
             }
         }
@@ -193,6 +196,7 @@ namespace PortalStoque.API.Services
                 catch (Exception e)
                 {
                     Exception error = new Exception(e.Message);
+                    Logger.writeLog(e.Message);
                     throw error;
                 }
 
@@ -208,8 +212,9 @@ namespace PortalStoque.API.Services
                     {
                         requestStream.Close();
                     }
-                    catch (Exception )
+                    catch (Exception ex)
                     {
+                        Logger.writeLog(ex.Message);
                     }
                 }
             }
@@ -251,12 +256,14 @@ namespace PortalStoque.API.Services
                     if (nodes == null || nodes.Count < 1)
                     {
                         Exception error = new Exception("XML de resposta não possui um elemento de resposta");
+                        Logger.writeLog(error.Message);
                         throw error;
                     }
                 }
                 catch (Exception)
                 {
                     Exception error = new Exception("Erro ao interpretar resposta do servidor");
+                    Logger.writeLog(error.Message);
                     throw error;
                 }
 
@@ -274,6 +281,7 @@ namespace PortalStoque.API.Services
                     }
                     catch (Exception e)
                     {
+                        Logger.writeLog(e.Message);
                     }
                 }
             }

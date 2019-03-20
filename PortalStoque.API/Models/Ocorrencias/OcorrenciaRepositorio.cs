@@ -72,9 +72,10 @@ namespace PortalStoque.API.Models.Ocorrencias
                 }
 
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                throw new ArgumentException("Erro ao Recuperar dados."+ e.Message);
+                Logger.writeLog(ex.Message);
+                throw ex;
             }
         }
         public int GetTotalOcor(string filter)
@@ -113,10 +114,5 @@ namespace PortalStoque.API.Models.Ocorrencias
             }
             return ret;
         }
-        public Ocorrencia Get(int id)
-        {
-            throw new NotImplementedException();
-        }
-
     }
 }

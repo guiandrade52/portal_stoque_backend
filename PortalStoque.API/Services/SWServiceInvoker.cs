@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PortalStoque.API.Controllers.services;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -76,9 +77,10 @@ namespace PortalStoque.API.Services
 
                 callService(conn, null, "MobileLoginSP.logout");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //e.printStackTrace(); // pode ser ignorado
+                Logger.writeLog(ex.Message);
+                throw ex;
             }
         }
 
@@ -91,8 +93,8 @@ namespace PortalStoque.API.Services
             if (!"1".Equals(status) && !silentMode)
             {
                 String msg = getChildNode("statusMessage", sr).Value;
+                Logger.writeLog(msg);
                 throw new Exception(msg);
-
             }
         }
 
@@ -223,6 +225,7 @@ namespace PortalStoque.API.Services
                 catch (Exception e)
                 {
                     Exception error = new Exception("Erro ao interpretar resposta do servidor: " + e);
+                    Logger.writeLog(error.Message);
                     throw error;
                 }
 
@@ -240,6 +243,7 @@ namespace PortalStoque.API.Services
                     }
                     catch (Exception e)
                     {
+                        Logger.writeLog(e.Message);
                     }
                 }
             }

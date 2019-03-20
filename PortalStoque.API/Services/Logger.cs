@@ -34,8 +34,10 @@ namespace PortalStoque.API.Controllers.services
                 txtWriter.WriteLine("  :{0}", logMessage);
                 txtWriter.WriteLine("-------------------------------");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                writeLog(ex.Message);
+                throw ex;
             }
         }
     }

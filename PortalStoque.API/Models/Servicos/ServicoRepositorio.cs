@@ -1,10 +1,10 @@
 ﻿using Dapper;
+using PortalStoque.API.Controllers.services;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Web;
 
 namespace PortalStoque.API.Models.Servicos
 {
@@ -19,9 +19,10 @@ namespace PortalStoque.API.Models.Servicos
                     return _Conexao.Query<Servico>(filter).ToList();
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                throw new ArgumentException("Erro ao tentar recuperar Serviço. " + e.Message);
+                Logger.writeLog(ex.Message);
+                throw ex;
             }
 
         }

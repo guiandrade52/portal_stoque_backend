@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using PortalStoque.API.Controllers.services;
 using System;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -28,9 +29,10 @@ namespace PortalStoque.API.Models.Cits
                     return _Conexao.Query<Cit>(sql).FirstOrDefault();
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                throw new ArgumentException("Erro ao tentar recuperar CIT " + e.Message);
+                Logger.writeLog(ex.Message);
+                throw ex;
             }
         }
     }

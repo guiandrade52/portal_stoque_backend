@@ -29,9 +29,10 @@ namespace PortalStoque.API.Models.Produtos
                     return _Conexao.Query<Produto>(query).ToList();
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                throw new ArgumentException("Erro ao tentar recuperar Produtos. " + e.Message);
+                Logger.writeLog(ex.Message);
+                throw ex;
             }
         }
     }
