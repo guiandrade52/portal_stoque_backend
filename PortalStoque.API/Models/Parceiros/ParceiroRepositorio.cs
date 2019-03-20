@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using PortalStoque.API.Controllers.services;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -25,9 +26,34 @@ namespace PortalStoque.API.Models.Parceiros
                     return _Conexao.Query<Parceiro>(query).ToList();
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                throw new ArgumentException("Erro ao tentar recuperar Parceiros. " + e.Message);
+                Logger.writeLog(ex.Message);
+                throw ex;
+            }
+        }
+
+        public IEnumerable<ParceiroContrato> ParceirosPorContrato(string contratos)
+        {
+            string query = string.Format(@"SELECT
+	                                        PAR.CODPARC AS CodParc,
+	                                        PAR.NOMEPARC AS Nome,
+	                                        CON.NUMCONTRATO AS Contrato
+                                        FROM TGFPAR PAR
+                                        INNER JOIN TCSCON CON WITH(NOLOCK) ON PAR.CODPARC = CON.CODPARC
+                                        WHERE CON.NUMCONTRATO IN ({0})", contratos);
+
+            try
+            {
+                using (var _Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["principal"].ConnectionString))
+                {
+                    return _Conexao.Query<ParceiroContrato>(query).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.writeLog(ex.Message);
+                throw ex;
             }
         }
     }

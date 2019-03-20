@@ -5,9 +5,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Http;
 
 namespace PortalStoque.API.Models.Usuarios
 {

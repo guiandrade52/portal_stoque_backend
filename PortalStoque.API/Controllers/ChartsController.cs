@@ -12,14 +12,18 @@ namespace PortalStoque.API.Controllers
     public class ChartsController : ApiController
     {
         static readonly IChartsRepositorio _ChartsRepositorio = new ChartsRepositorio();
-        public class ChartResult
+        public class ChartLine
         {
             public int Ano { get; set; }
             public int Mes { get; set; }
             public int Total { get; set; }
+        };
+
+        public class ChartRound
+        {
             public int TotalAbertas { get; set; }
             public int TotalFechadas { get; set; }
-        };
+        }
 
         [HttpGet]
         public HttpResponseMessage Charts()
@@ -28,8 +32,11 @@ namespace PortalStoque.API.Controllers
             var permisoes = u.GetPermisoes();
             var user = u.GetUsuario();
 
+            if (string.IsNullOrEmpty(permisoes.Contratos))
+                return Request.CreateResponse(HttpStatusCode.NoContent);
+
             DateTime dtinicial = DateTime.Now;
-            List<ChartResult> data = new List<ChartResult>();
+            List<ChartLine> data = new List<ChartLine>();
             for (int i = 0; i < 12; i++)
             {
                 dtinicial = new DateTime(dtinicial.Year, dtinicial.Month, 1).AddMonths(-1);
@@ -45,7 +52,7 @@ namespace PortalStoque.API.Controllers
                     Contratos = permisoes.Contratos
                 };
 
-                data.Add(new ChartResult { Mes = dtinicial.Month, Ano = dtinicial.Year, Total = _ChartsRepositorio.GetChartLine(chart) });
+                data.Add(new ChartLine { Mes = dtinicial.Month, Ano = dtinicial.Year, Total = _ChartsRepositorio.GetChartLine(chart) });
             }
 
             Charts charts = new Charts
@@ -59,9 +66,7 @@ namespace PortalStoque.API.Controllers
             charts.Situacao = "AND OCO.SITUACAO IN (8,6,9,21,20,22,2,17,18,16,13)";
             int totalFechadas = _ChartsRepositorio.GetChartRound(charts);
 
-            data.Add(new ChartResult { TotalAbertas = totalAberto, TotalFechadas = totalFechadas});
-
-            return Request.CreateResponse(HttpStatusCode.OK,  data);
+            return Request.CreateResponse(HttpStatusCode.OK, new { ChartsLine = data, ChartsRound = new ChartRound{ TotalFechadas = totalFechadas, TotalAbertas= totalAberto} });
         }
     }
 }

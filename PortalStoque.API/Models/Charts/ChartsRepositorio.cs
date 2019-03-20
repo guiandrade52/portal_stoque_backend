@@ -10,7 +10,10 @@ namespace PortalStoque.API.Models.Charts
         public int GetChartLine(Charts charts)
         {
             var ret = 0;
-            string sql =string.Format(@"SELECT COUNT(*) FROM AD_STOOCO OCO 
+            if (string.IsNullOrWhiteSpace(charts.Contratos))
+                return ret;
+
+            string sql = string.Format(@"SELECT COUNT(*) FROM AD_STOOCO OCO 
                                             INNER JOIN TGFPAR PAR WITH(NOLOCK) ON PAR.CODPARC = OCO.CODPARC
                                             LEFT JOIN TSIEND ENDE WITH(NOLOCK) ON ENDE.CODEND = OCO.CODEND
                                             LEFT JOIN TSICID CID WITH(NOLOCK) ON CID.CODCID = OCO.CODCID 

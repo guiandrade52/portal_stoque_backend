@@ -113,3 +113,83 @@ Log Entry : 08:44:27 terça-feira, 19 de março de 2019
   :
   :Incorrect syntax near ','.
 -------------------------------
+
+Log Entry : 12:00:07 quarta-feira, 20 de março de 2019
+  :
+  :Incorrect syntax near ')'.
+-------------------------------
+
+Log Entry : 12:00:51 quarta-feira, 20 de março de 2019
+  :
+  :Incorrect syntax near ')'.
+-------------------------------
+
+Log Entry : 12:01:16 quarta-feira, 20 de março de 2019
+  :
+  :Incorrect syntax near ')'.
+-------------------------------
+
+Log Entry : 12:01:16 quarta-feira, 20 de março de 2019
+  :
+  :Incorrect syntax near ')'.
+-------------------------------
+
+Log Entry : 12:09:25 quarta-feira, 20 de março de 2019
+  :
+  :Incorrect syntax near ')'.
+-------------------------------
+
+Log Entry : 12:09:28 quarta-feira, 20 de março de 2019
+  :
+  :Incorrect syntax near ')'.
+-------------------------------
+
+Log Entry : 12:10:26 quarta-feira, 20 de março de 2019
+  :
+  :Incorrect syntax near ')'.
+-------------------------------
+
+Log Entry : 12:12:43 quarta-feira, 20 de março de 2019
+  :
+  :Incorrect syntax near ')'.
+-------------------------------
+
+Log Entry : 12:12:52 quarta-feira, 20 de março de 2019
+  :
+  :Incorrect syntax near ')'.
+-------------------------------
+
+Log Entry : 12:13:04 quarta-feira, 20 de março de 2019
+  :
+  :Incorrect syntax near ')'.
+-------------------------------
+
+Log Entry : 12:13:20 quarta-feira, 20 de março de 2019
+  :
+  :Incorrect syntax near ')'.
+-------------------------------
+
+Log Entry : 12:17:14 quarta-feira, 20 de março de 2019
+  :
+  :Incorrect syntax near ')'.
+-------------------------------
+
+Log Entry : 12:17:49 quarta-feira, 20 de março de 2019
+  :
+  :Incorrect syntax near ')'.
+-------------------------------
+
+Log Entry : 12:18:00 quarta-feira, 20 de março de 2019
+  :
+  :Incorrect syntax near ')'.
+-------------------------------
+
+Log Entry : 12:18:50 quarta-feira, 20 de março de 2019
+  :
+  :Incorrect syntax near ')'.
+-------------------------------
+
+Log Entry : 12:19:56 quarta-feira, 20 de março de 2019
+  :
+  :Incorrect syntax near ')'.
+-------------------------------

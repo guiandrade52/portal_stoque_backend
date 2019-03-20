@@ -1,0 +1,11 @@
+declare @UserName varchar(40), @Password varchar(40)
+SET @UserName = 'fagner.gomes'
+SET @Password = 'alfa@4722'
+
+SELECT 
+	PRTL.IDUSUPRTL AS IdUsuario,
+	CTT.NOMECONTATO AS Nome,
+	PRTL.LGNUSU AS UserName
+	FROM AD_USUPRTL PRTL
+	INNER JOIN TGFCTT CTT WITH(NOLOCK) ON CTT.CODCONTATO = PRTL.CODCONTATO AND CTT.CODPARC = PRTL.CODPARC
+    WHERE PRTL.LGNUSU = @UserName AND PRTL.PSWUSU = @Password
