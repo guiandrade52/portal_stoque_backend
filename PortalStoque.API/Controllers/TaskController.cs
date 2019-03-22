@@ -3,6 +3,7 @@ using PortalStoque.API.Models.Cits;
 using PortalStoque.API.Models.OcorNews;
 using PortalStoque.API.Models.Ocorrencias;
 using PortalStoque.API.Models.Rats;
+using PortalStoque.API.Models.SolucaoProposta;
 using PortalStoque.API.Services;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,7 @@ namespace PortalStoque.API.Controllers
         static readonly IAnexoRepositorio _AnexoRepositorio = new AnexoRepositorio();
         static readonly IRatRepositorio _RatRepositorio = new RatRepositorio();
         static readonly IOcorNewsRepositorio _OcorNewsRepositorio = new OcorNewsRepositorio();
+        static readonly ISolucaoRepositorio _solucaoRepositorio = new SolucaoRepositorio();
 
         public HttpResponseMessage GetAll([FromUri]Filter pFilter)
         {
@@ -39,6 +41,7 @@ namespace PortalStoque.API.Controllers
                 item.Rat = _RatRepositorio.GetDataRat(item.ExecutionId);
                 item.Cit = _CitRepositorio.GetCit(item.ExecutionId);
                 item.Anexos = _AnexoRepositorio.GetAnexo(item.ExecutionId);
+                item.Solucao = _solucaoRepositorio.GetSolucaos(item.ExecutionId);
             }
 
             // Carrega quantidade de ocorrências

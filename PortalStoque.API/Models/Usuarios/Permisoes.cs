@@ -8,5 +8,6 @@
         public string Contratos { get; set; }
         public char RgtOcorrencia { get; set; }
         public string Perfil { get; set; }
+        public char ClienteInterno { get; set; }
     }
 }

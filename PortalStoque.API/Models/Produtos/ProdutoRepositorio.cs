@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using PortalStoque.API.Controllers.services;
 using System;
 using System.Collections.Generic;
 using System.Configuration;

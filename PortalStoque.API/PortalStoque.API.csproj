@@ -136,6 +136,9 @@
     <Compile Include="Models\Mail\IMailRepositorio.cs" />
     <Compile Include="Models\Mail\MailRepositorio.cs" />
     <Compile Include="Models\Parceiros\ParceiroContrato.cs" />
+    <Compile Include="Models\SolucaoProposta\ISolucaoRepositorio.cs" />
+    <Compile Include="Models\SolucaoProposta\Solucao.cs" />
+    <Compile Include="Models\SolucaoProposta\SolucaoRepositorio.cs" />
     <Compile Include="Services\Logger.cs" />
     <Compile Include="Controllers\services\UsuarioCorrent.cs" />
     <Compile Include="Controllers\ServicoController.cs" />

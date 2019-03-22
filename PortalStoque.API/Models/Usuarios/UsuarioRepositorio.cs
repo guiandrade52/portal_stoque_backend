@@ -76,24 +76,24 @@ namespace PortalStoque.API.Models.Usuarios
                 {
                     return conexao.Query<Permisoes>
                         (@"SELECT 
-                            PRTL.IDUSUPRTL as IdUsuario,
-                            PRTL.ALTPSW AS AltPassword,
-                            PRTL.PRFLUSU AS Perfil,
-                            PRTL.RGSTOCOR AS RgtOcorrencia,
-                            STUFF((SELECT ', ' + RTRIM(CON.CODPARCAT) AS [text()]
-                            FROM AD_USUPRTLCON CON
-                            WHERE CON.IDUSUPRTL = PRTL.IDUSUPRTL
-                            FOR XML PATH
-                            ('')), 1, 1, '' ) AS ClienteAt,
-                            STUFF((SELECT ', ' + RTRIM(CON.CODPARCAB) AS [text()]
-                            FROM AD_USUPRTLCON CON
-                            WHERE CON.IDUSUPRTL = PRTL.IDUSUPRTL
-                            FOR XML PATH('')), 1, 1, '' ) AS ClienteAb,
-                            STUFF((SELECT ', ' + RTRIM(CON.NUMCONTRATO) AS [text()]
-                            FROM AD_USUPRTLCON CON
-                            WHERE CON.IDUSUPRTL = PRTL.IDUSUPRTL
-                            FOR XML PATH('')), 1, 1, '' ) AS Contratos
-                            FROM AD_USUPRTL PRTL
+	                        PRTL.IDUSUPRTL as IdUsuario,
+	                        PRTL.CLIENTEINTERNO as ClienteInterno,
+	                        PRTL.ALTPSW AS AltPassword,
+	                        PRTL.PRFLUSU AS Perfil,
+	                        PRTL.RGSTOCOR AS RgtOcorrencia,
+	                        STUFF((SELECT ', ' + RTRIM(CON.CODPARCAT) AS [text()]
+	                        FROM AD_USUPRTLCON CON
+	                        WHERE CON.IDUSUPRTL = PRTL.IDUSUPRTL
+	                        FOR XML PATH('')), 1, 1, '' ) AS ClienteAt,
+	                        STUFF((SELECT ', ' + RTRIM(CON.CODPARCAB) AS [text()]
+	                        FROM AD_USUPRTLCON CON
+	                        WHERE CON.IDUSUPRTL = PRTL.IDUSUPRTL
+	                        FOR XML PATH('')), 1, 1, '' ) AS ClienteAb,
+	                        STUFF((SELECT ', ' + RTRIM(CON.NUMCONTRATO) AS [text()]
+	                        FROM AD_USUPRTLCON CON
+	                        WHERE CON.IDUSUPRTL = PRTL.IDUSUPRTL
+	                        FOR XML PATH('')), 1, 1, '' ) AS Contratos
+	                        FROM AD_USUPRTL PRTL
                             WHERE PRTL.IDUSUPRTL = @id", new { id }).First();
                 }
             }
