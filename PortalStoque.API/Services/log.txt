@@ -193,3 +193,8 @@ Log Entry : 12:19:56 quarta-feira, 20 de março de 2019
   :
   :Incorrect syntax near ')'.
 -------------------------------
+
+Log Entry : 10:39:46 quarta-feira, 27 de março de 2019
+  :
+  :Must declare the scalar variable "@idUsuario".
+-------------------------------

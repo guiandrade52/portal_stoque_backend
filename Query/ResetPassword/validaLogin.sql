@@ -1,0 +1,12 @@
+declare @login varchar, @idUsuario int
+
+set @idUsuario = 83
+set @login = 'fagner.gomes'
+
+SELECT PRTL.IDUSUPRTL AS IdUsuario
+	,CTT.NOMECONTATO AS Nome
+	,PRTL.LGNUSU AS Login
+	,CTT.EMAIL AS Email
+	FROM AD_USUPRTL PRTL
+	INNER JOIN TGFCTT CTT WITH(NOLOCK) ON CTT.CODCONTATO = PRTL.CODCONTATO AND CTT.CODPARC = PRTL.CODPARC 
+	WHERE PRTL.LGNUSU = 'fagner.gomes' OR IDUSUPRTL = @idUsuario
