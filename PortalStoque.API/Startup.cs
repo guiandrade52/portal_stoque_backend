@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Microsoft.Owin;
@@ -16,6 +17,8 @@ namespace PortalStoque.API
         {
             // configuracao WebApi
             var config = new HttpConfiguration();
+
+
             // configurando rotas
             config.MapHttpAttributeRoutes();
             config.Routes.MapHttpRoute(
@@ -40,7 +43,7 @@ namespace PortalStoque.API
             {
                 AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString("/token"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(1),
+                AccessTokenExpireTimeSpan = TimeSpan.FromHours(1),
                 Provider = new ProviderDeTokensDeAcesso()
             };
 

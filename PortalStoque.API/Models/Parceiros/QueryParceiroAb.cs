@@ -11,11 +11,13 @@ namespace PortalStoque.API.Models.Parceiros
         public static string GetFilter(Permisoes permisao, string search)
         {
             string _where = "WHERE PAR.CODPARC <> 0 AND PAR.NOMEPARC IS NOT NULL ";
+            int numero = 0;
 
-            if (!string.IsNullOrEmpty(search))
-            {
-                _where = string.Format("{0} AND PAR.NOMEPARC LIKE '{1}%' ", _where, search);
-            }
+            if (!string.IsNullOrWhiteSpace(search))
+                if (int.TryParse(search, out numero))
+                    _where = string.Format("{0} AND PAR.CODPARC IN ({1}) ", _where, search);
+                else
+                    _where = string.Format("{0} AND PAR.NOMEPARC LIKE '{1}%' ", _where, search);
 
             if (permisao.Perfil == "C" || permisao.Perfil == "CO")
             {

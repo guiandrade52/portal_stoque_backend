@@ -9,5 +9,6 @@ namespace PortalStoque.API.Models.Parceiros
     {
         IEnumerable<Parceiro> GetAll(string filter);
         IEnumerable<ParceiroContrato> ParceirosPorContrato(string contratos);
+        IEnumerable<ParceiroContrato> ParceirosDoAlocado(string contratos);
     }
 }

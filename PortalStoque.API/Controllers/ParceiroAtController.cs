@@ -17,5 +17,10 @@ namespace PortalStoque.API.Controllers
 
             return Request.CreateResponse(HttpStatusCode.OK, _parceiroRepositorio.GetAll(filter));
         }
+
+        public HttpResponseMessage GetParceiroDoAlocado(string contratos)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, _parceiroRepositorio.ParceirosDoAlocado(contratos));
+        }
     }
 }

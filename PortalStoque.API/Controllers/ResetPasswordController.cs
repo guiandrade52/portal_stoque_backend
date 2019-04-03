@@ -1,7 +1,7 @@
-﻿using PortalStoque.API.Models.ResetPassword;
+﻿using PortalStoque.API.Models.Mail;
+using PortalStoque.API.Models.ResetPassword;
+using PortalStoque.API.Models.Usuarios;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Mail;
@@ -12,6 +12,8 @@ namespace PortalStoque.API.Controllers
     public class ResetPasswordController : ApiController
     {
         static readonly IResetRepositorio _resetRepositorio = new ResetRepositorio();
+        static readonly IUsuarioRepositorio _usuarioRepositorio = new UsuarioRepositorio();
+        static readonly IMailRepositorio _mailRepositorio = new MailRepositorio();
 
         [HttpPost]
         public HttpResponseMessage ValidaCodigo(int codigo, int idUsuario)
@@ -170,8 +172,7 @@ namespace PortalStoque.API.Controllers
                     var inicio = result.Email.Substring(0, 3);
                     var final = result.Email.Substring(result.Email.IndexOf("@"));
                     var maskmail = string.Format("{0}*****{1}", inicio, final);
-                    return Request.CreateResponse(HttpStatusCode.OK, new { status = true, email = maskmail, id = result.IdUsuario });
-                    //return Request.CreateResponse(HttpStatusCode.OK, new { status = _mailRepositorio.SendMail(mail), email = maskmail });
+                    return Request.CreateResponse(HttpStatusCode.OK, new { status = _mailRepositorio.SendMail(mail), email = maskmail, id = result.IdUsuario });
                 }
                 else
                     return Request.CreateResponse(HttpStatusCode.BadRequest, new { status = false, Message = "Encontramos um problema para enviar o e-mail. Tente novamente mais tarde" });
@@ -185,7 +186,134 @@ namespace PortalStoque.API.Controllers
             if (_resetRepositorio.ValidaCodigo(codigo, idUsuario))
             {
                 if (_resetRepositorio.UpdatePassword(idUsuario, codigo, password))
-                    return Request.CreateResponse(HttpStatusCode.OK, new { status = true });
+                {
+                    MailMessage mail = new MailMessage();
+                    Usuario usuario = _usuarioRepositorio.GetUsuario(idUsuario);
+                    #region msgBody
+                    var msgBody = string.Format(@"<div bgcolor='#FFFFFF'>
+    <table cellpadding='0' cellspacing='0' width='100%' align='center' border='0' bgcolor='#FFFFFF'>
+        <tbody>
+            <tr>
+                <td>
+                    <table cellpadding='0' cellspacing='0' width='600' align='center' border='0'>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href='http://www.stoque.com.br/' title='www.stoque.com.br' target='_blank'>
+                                        <img src='http://www.stoque.com.br/wp-content/themes/stoque/img/stoque-logo.png' alt='Stoque Soluções tecnológicas' border='0' style='display:block'>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table width='100%' border='0' cellspacing='0' cellpadding='0' bgcolor='#0397d6'>
+                                        <tbody>
+                                            <tr>
+                                                <td width='25'>&nbsp;</td>
+                                                <td align='left' height='70'>
+                                                    <font color='#ffffff' size='3' face='Arial, Helvetica, sans-serif'>
+                                                        Prezado(a) <b>{0}</b><br>
+
+
+                                                    </font>
+                                                </td>
+                                                <td width='25'>&nbsp;</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table width='100%' border='0' cellspacing='0' cellpadding='0'>
+                                        <tbody>
+                                            <tr>
+                                                <td width='25'>&nbsp;</td>
+                                                <td align='left' valign='top'>
+                                                    <font color='#656565' size='2' face='Arial, Helvetica, sans-serif'>
+                                                        <br>
+                                                        Conforme solicitado no Portal Stoque, sua senha foi redefinida.<br>
+                                                        <br>
+                                                        O seu login de acesso continua o mesmo:
+                                                        <br><br>
+                                                        Login: <strong>{1}</strong><br /><br />
+                                                        Nova Senha: <strong>{2}</strong>
+                                                        <br><br><br>
+                                                        
+                                                         Atenciosamente,<br>
+                                                         Service Desk – Stoque Soluções Tecnológicas<br>
+                                                         helpdesk@stoque.com.br<br/>
+                                                    </font>
+                                                </td>
+                                                <td width='25'>&nbsp;</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <br>
+                                    <br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table width='100%' border='0' cellspacing='0' cellpadding='0' bgcolor='#0397d6'>
+                                        <tbody>
+                                            <tr>
+                                                <td width='25'>&nbsp;</td>
+                                                <td align='left' height='30'>
+                                                    <span style='color:#ffffff;font-family:Arial,Helvetica,sans-serif'>
+                                                        Visite nossos canais&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        <a href='https://www.facebook.com/StoqueBrasil' style='color:#fff;text-decoration:underline;font-size:12px;text-align:center' align='center' target='_blank'>Facebook</a>
+                                                        &nbsp;<a href='https://twitter.com/StoqueBrasil' style='color:#fff;text-decoration:underline;font-size:12px;text-align:center' align='center' target='_blank'>Twitter</a>
+                                                        &nbsp;<a href='https://www.youtube.com/channel/UCG5LMl3FsnbCQPja3fAWv7A' style='color:#fff;text-decoration:underline;font-size:12px;text-align:center' align='center' target='_blank'>YouTube</a>
+                                                        &nbsp;<a href='https://www.linkedin.com/company/stoque' style='color:#fff;text-decoration:underline;font-size:12px;text-align:center' align='center' target='_blank'>LinkedIn</a>
+                                                        &nbsp;<a href='http://www.stoque.com.br/' style='color:#fff;text-decoration:underline;font-size:12px;text-align:center' align='center' target='_blank'>WebSite</a>
+                                                    </span>
+                                                </td>
+                                                <td width='25'>&nbsp;</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table width='100%' border='0' cellspacing='0' cellpadding='0'>
+                                        <tbody>
+                                            <tr>
+                                                <td width='25'>&nbsp;</td>
+                                                <td align='left'>
+                                                    <font color='#8e8e8e' size='2' face='Arial, Helvetica, sans-serif'>
+                                                        <br>
+                                                        <br><br>
+                                                        © Stoque. Todos os direitos reservados.
+                                                    </font>
+                                                </td>
+                                                <td width='25'>&nbsp;</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+", usuario.Nome, usuario.UserName, password);
+                    #endregion
+                    mail.From = new MailAddress(Properties.Settings.Default.SmtpFrom);
+                    mail.To.Add(usuario.Email);
+                    mail.Subject = string.Format("{0}, sua senha foi redefinida com sucesso. ", usuario.Nome.Substring(0, usuario.Nome.IndexOf(" ")));
+                    mail.Body = msgBody;
+                    mail.IsBodyHtml = true;
+                    return Request.CreateResponse(HttpStatusCode.OK, new { status = true, email = _mailRepositorio.SendMail(mail) });
+                }
                 return Request.CreateResponse(HttpStatusCode.BadRequest, new { status = false, Message = "Encontramos um problema para atualizar a senha, tente novamente mais tarde." });
             }
             return Request.CreateResponse(HttpStatusCode.BadRequest, new { status = false, Message = "O código informado está expirado ou já foi utilizado, gentileza solicitar um novo." });

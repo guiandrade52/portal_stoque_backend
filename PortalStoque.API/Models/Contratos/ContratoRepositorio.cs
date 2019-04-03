@@ -72,5 +72,92 @@ namespace PortalStoque.API.Models.Contratos
                 throw ex;
             }
         }
+
+        public int DeleteContrato(int idUsuario, int contrato, int codParc)
+        {
+            var sql = string.Format(@"DELETE AD_USUPRTLCON WHERE IDUSUPRTL = {0} AND NUMCONTRATO IN ({1}) AND CODPARCAT IN ({2})", idUsuario, contrato, codParc);
+            try
+            {
+                using (SqlConnection conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["principal"].ConnectionString))
+                {
+                    return conexao.Execute(sql);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.writeLog(ex.Message);
+                throw ex;
+            }
+        }
+
+        public int DeleteAllContrato(int idUsuario)
+        {
+            var sql = string.Format(@"DELETE AD_USUPRTLCON WHERE IDUSUPRTL = {0}", idUsuario);
+            try
+            {
+                using (SqlConnection conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["principal"].ConnectionString))
+                {
+                    return conexao.Execute(sql);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.writeLog(ex.Message);
+                throw ex;
+            }
+        }
+
+        public int SalvarContrato(int idUsuario, int codPar, int contrato, int codParAt)
+        {
+            try
+            {
+                using (var conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["principal"].ConnectionString))
+                {
+                    int exist = (int)conexao.ExecuteScalar(string.Format(@"SELECT COUNT(*) FROM AD_USUPRTLCON 
+                                                        WHERE IDUSUPRTL = {0} 
+                                                        AND CODPARCAT = {1} 
+                                                        AND CODPARCAB = {2} 
+                                                        AND NUMCONTRATO = {3}", idUsuario, codParAt, codPar, contrato));
+                    if (exist > 0)
+                        return exist;
+
+                    string sql = string.Format(@"INSERT INTO AD_USUPRTLCON (IDUSUPRTL, SEQUENCIA, CODPARCAT, CODPARCAB, NUMCONTRATO)
+                                            VALUES (
+                                                    {0},
+                                                    (SELECT ISNULL(MAX(SEQUENCIA), 0)+1  FROM AD_USUPRTLCON WHERE IDUSUPRTL = {0}),
+                                                    {1}, {2}, {3})", idUsuario, codParAt, codPar, contrato);
+                    conexao.Execute(sql);
+                    return -1;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.writeLog(ex.Message);
+                throw ex;
+            }
+        }
+
+        public IEnumerable<CadContrato> ListaContratosPUsuario(int idUsuario)
+        {
+            string query = string.Format(@"SELECT IDUSUPRTL AS idUsuario,
+	                                               NUMCONTRATO AS Contrato,
+                                                   CODPARCAT AS CodParc,
+	                                               NOMEPARC AS Nome
+	                                               FROM AD_USUPRTLCON PRLCON
+	                                               INNER JOIN TGFPAR PAR ON PRLCON.CODPARCAT = PAR.CODPARC
+	                                               WHERE IDUSUPRTL = {0}", idUsuario);
+            try
+            {
+                using (var _Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["principal"].ConnectionString))
+                {
+                    return _Conexao.Query<CadContrato>(query).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.writeLog(ex.Message);
+                throw ex;
+            }
+        }
     }
 }

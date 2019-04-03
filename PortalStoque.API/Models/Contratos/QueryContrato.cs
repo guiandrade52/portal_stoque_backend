@@ -24,5 +24,12 @@ namespace PortalStoque.API.Models.Contratos
             }
             return _where;
         }
+
+        public static string ContratoPParceiro(string parceiros)
+        {
+            string _where = @"WHERE CON.NUMCONTRATO <> 0 AND CON.ATIVO = 'S' ";
+
+            return _where = string.Format("{0} AND PAR.CODPARC IN ({1}) ", _where, parceiros);
+        }
     }
 }

@@ -35,13 +35,35 @@ namespace PortalStoque.API.Models.Parceiros
 
         public IEnumerable<ParceiroContrato> ParceirosPorContrato(string contratos)
         {
-            string query = string.Format(@"SELECT
+            string query = string.Format(@"SELECT DISTINCT
 	                                        PAR.CODPARC AS CodParc,
-	                                        PAR.NOMEPARC AS Nome,
-	                                        CON.NUMCONTRATO AS Contrato
+	                                        PAR.NOMEPARC AS Nome
                                         FROM TGFPAR PAR
                                         INNER JOIN TCSCON CON WITH(NOLOCK) ON PAR.CODPARC = CON.CODPARC
                                         WHERE CON.NUMCONTRATO IN ({0})", contratos);
+
+            try
+            {
+                using (var _Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["principal"].ConnectionString))
+                {
+                    return _Conexao.Query<ParceiroContrato>(query).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.writeLog(ex.Message);
+                throw ex;
+            }
+        }
+
+        public IEnumerable<ParceiroContrato> ParceirosDoAlocado(string contratos)
+        {
+            string query = string.Format(@"SELECT DISTINCT
+	                                        PAR.CODPARC AS CodParc,
+	                                        PAR.NOMEPARC AS Nome
+	                                        FROM BH_FTLEQP EQP
+	                                        INNER JOIN TGFPAR PAR WITH(NOLOCK) ON EQP.CODPARC = PAR.CODPARC
+	                                        WHERE NUMCONTRATO IN ({0})", contratos);
 
             try
             {

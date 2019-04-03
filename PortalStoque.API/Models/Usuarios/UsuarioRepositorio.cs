@@ -51,7 +51,7 @@ namespace PortalStoque.API.Models.Usuarios
                             (@"SELECT 
 	                            PRTL.IDUSUPRTL AS IdUsuario,
 	                            CTT.NOMECONTATO AS Nome,
-	                            PRTL.LGNUSU AS Login,
+	                            PRTL.LGNUSU AS UserName,
 	                            CTT.EMAIL AS Email,
                                 CTT.TELEFONE AS Telefone,
                                 CTT.CODCONTATO as CodContato
@@ -66,7 +66,6 @@ namespace PortalStoque.API.Models.Usuarios
                 throw ex;
             }
         }
-        
 
         public Permisoes GetPermisoes(int id)
         {
@@ -111,6 +110,26 @@ namespace PortalStoque.API.Models.Usuarios
                 using (var conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["principal"].ConnectionString))
                 {
                     return conexao.Query<Usuario>(filter).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.writeLog(ex.Message);
+                throw ex;
+            }
+        }
+        public IEnumerable<ParcConConfigs> GetParcCon(int idUsuario)
+        {
+            try
+            {
+                using (var conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["principal"].ConnectionString))
+                {
+                    return conexao.Query<ParcConConfigs>
+                            (@"SELECT IDUSUPRTL AS idUsuario,
+	                               CODPARCAT AS CodParcAt,
+	                               CODPARCAB AS CodParcAb,
+	                               NUMCONTRATO AS Contrato
+	                            FROM AD_USUPRTLCON WHERE IDUSUPRTL = @idUsuario", new { idUsuario }).ToList();
                 }
             }
             catch (Exception ex)

@@ -9,5 +9,6 @@ namespace PortalStoque.API.Models.Series
     {
         IEnumerable<Serie> GetAll(string filter);
         SerieDetails GetSerieDetails(string serie);
+        IEnumerable<SerieParcCon> GetAllParcCon(string serie);
     }
 }

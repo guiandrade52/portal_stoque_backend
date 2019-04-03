@@ -34,6 +34,38 @@ namespace PortalStoque.API.Models.Series
             }
         }
 
+        public IEnumerable<SerieParcCon> GetAllParcCon(string serie)
+        {
+            string query = string.Format(@"SELECT TOP 100
+                                                EQP.CONTROLE AS Serie,
+		                                        PRO.DESCRPROD AS Produto,
+		                                        EQP.SITUACAO,
+		                                        CON.NUMCONTRATO AS Contrato,
+		                                        CON.CODPARC AS CodParcCon,
+		                                        PAR.NOMEPARC AS NomeParcCon,
+                                                EQP.CODPARC AS CodParcAtendido,
+		                                        PAREQP.RAZAOSOCIAL AS NomeParcAtendido
+	                                        FROM BH_FTLEQP EQP WITH (NOLOCK)
+	                                        INNER JOIN TCSCON CON  WITH (NOLOCK) ON EQP.NUMCONTRATO = CON.NUMCONTRATO
+	                                        INNER JOIN TGFPAR PAR WITH (NOLOCK) ON PAR.CODPARC = CON.CODPARC
+                                            INNER JOIN TGFPAR PAREQP WITH (NOLOCK) ON PAREQP.CODPARC=EQP.CODPARC
+	                                        INNER JOIN TGFPRO PRO WITH(NOLOCK) ON PRO.CODPROD = EQP.CODPROD 
+                                            WHERE EQP.CONTROLE LIKE '{0}%'", serie);
+
+            try
+            {
+                using (var _Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["principal"].ConnectionString))
+                {
+                    return _Conexao.Query<SerieParcCon>(query).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.writeLog(ex.Message);
+                throw ex;
+            }
+        }
+
         public SerieDetails GetSerieDetails(string serie)
         {
             string query = string.Format(@" SELECT 

@@ -11,5 +11,6 @@ namespace PortalStoque.API.Models.Usuarios
         Permisoes GetPermisoes(int id);
         Login Login(Login login);
         IEnumerable<Usuario> GetAll(string filter);
+        IEnumerable<ParcConConfigs> GetParcCon(int idUsuario);
     }
 }

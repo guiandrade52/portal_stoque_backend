@@ -29,5 +29,9 @@ namespace PortalStoque.API.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, _serieRepositorio.GetSerieDetails(serie));
         }
 
+        public HttpResponseMessage GetAllParcCon(string serieParcCon)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, _serieRepositorio.GetAllParcCon(serieParcCon));
+        }
     }
 }
