@@ -44,7 +44,8 @@ namespace PortalStoque.API.Models.Contatos
         {
             return string.Format(@"	WHERE 1 = 1
                                     AND EQP.SITUACAO = 'A'
-                                    AND EQP.CONTROLE = '{0}'", serie);
+                                    AND EQP.CONTROLE = '{0}'
+                                    ORDER BY CTT.NOMECONTATO", serie);
         }
     }
 }
