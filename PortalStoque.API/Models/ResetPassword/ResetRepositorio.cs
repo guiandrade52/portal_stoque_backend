@@ -94,8 +94,8 @@ namespace PortalStoque.API.Models.ResetPassword
                     {
                         //CriptoHelper.HashMD5(pPassword);
                         conexao.Execute(@"UPDATE AD_USUPRTL 
-                                                            SET PSWUSU = @password 
-                                                            WHERE IDUSUPRTL = @idUsuario ", new { password, idUsuario });
+                                                    SET PSWUSU = @password, ALTPSW = 'N' 
+                                                    WHERE IDUSUPRTL = @idUsuario ", new { password, idUsuario });
 
                         if (codigo > 0)
                             conexao.Execute(@"DELETE AD_CONFMAIL WHERE IDRESETMAIL = @codigo", new { codigo });
