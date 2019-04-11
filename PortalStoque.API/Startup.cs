@@ -8,7 +8,6 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 
 [assembly: OwinStartup(typeof(PortalStoque.API.Startup))]
-
 namespace PortalStoque.API
 {
     public class Startup
@@ -17,7 +16,6 @@ namespace PortalStoque.API
         {
             // configuracao WebApi
             var config = new HttpConfiguration();
-
 
             // configurando rotas
             config.MapHttpAttributeRoutes();

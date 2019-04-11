@@ -1,5 +1,6 @@
 ﻿using Microsoft.Owin.Security.OAuth;
 using PortalStoque.API.Models.Usuarios;
+using PortalStoque.API.Services;
 using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -25,13 +26,25 @@ namespace PortalStoque.API
                 Password = context.Password
             };
 
-            login = _UserRepositorio.Login(login);
+            Login result = _UserRepositorio.Login(login);
 
-            if (login != null)
+            if (result == null)
             {
+                CriptoMD5 mD5 = new CriptoMD5();
+                login.Password = mD5.RetornarMD5(login.Password);
+                result = _UserRepositorio.Login(login);
+            }
+
+            if (result != null)
+            {
+                if(result.Ativo == 'N')
+                {
+                    context.SetError("invalid_login", "Seu usuário encontra-se desativado, para mais informações entre em contato com suporte.");
+                    return;
+                }
                 var identity = new ClaimsIdentity(context.Options.AuthenticationType);
                 identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
-                identity.AddClaim(new Claim("UserId", login.IdUsuario.ToString()));
+                identity.AddClaim(new Claim("UserId", result.IdUsuario.ToString()));
                 context.Validated(identity);
             }
             else

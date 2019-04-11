@@ -258,3 +258,59 @@ Log Entry : 11:23:00 quarta-feira, 3 de abril de 2019
   :
   :Incorrect syntax near ')'.
 -------------------------------
+
+Log Entry : 12:07:28 quinta-feira, 11 de abril de 2019
+  :
+  :Incorrect syntax near 'PRTL'.
+Incorrect syntax near the keyword 'with'. If this statement is a common table expression, an xmlnamespaces clause or a change tracking context clause, the previous statement must be terminated with a semicolon.
+-------------------------------
+
+Log Entry : 12:07:36 quinta-feira, 11 de abril de 2019
+  :
+  :Incorrect syntax near 'PRTL'.
+Incorrect syntax near the keyword 'with'. If this statement is a common table expression, an xmlnamespaces clause or a change tracking context clause, the previous statement must be terminated with a semicolon.
+-------------------------------
+
+Log Entry : 12:07:39 quinta-feira, 11 de abril de 2019
+  :
+  :Incorrect syntax near 'PRTL'.
+Incorrect syntax near the keyword 'with'. If this statement is a common table expression, an xmlnamespaces clause or a change tracking context clause, the previous statement must be terminated with a semicolon.
+-------------------------------
+
+Log Entry : 12:07:44 quinta-feira, 11 de abril de 2019
+  :
+  :Incorrect syntax near 'PRTL'.
+Incorrect syntax near the keyword 'with'. If this statement is a common table expression, an xmlnamespaces clause or a change tracking context clause, the previous statement must be terminated with a semicolon.
+-------------------------------
+
+Log Entry : 16:08:14 quinta-feira, 11 de abril de 2019
+  :
+  :Must declare the scalar variable "@CodContato".
+-------------------------------
+
+Log Entry : 16:08:55 quinta-feira, 11 de abril de 2019
+  :
+  :Must declare the scalar variable "@CodContato".
+-------------------------------
+
+Log Entry : 16:16:29 quinta-feira, 11 de abril de 2019
+  :
+  :Must declare the scalar variable "@CodContato".
+-------------------------------
+
+Log Entry : 16:19:06 quinta-feira, 11 de abril de 2019
+  :
+  :Must declare the scalar variable "@CodContato".
+-------------------------------
+
+Log Entry : 16:54:36 quinta-feira, 11 de abril de 2019
+  :
+  :String or binary data would be truncated.
+The statement has been terminated.
+-------------------------------
+
+Log Entry : 16:55:10 quinta-feira, 11 de abril de 2019
+  :
+  :String or binary data would be truncated.
+The statement has been terminated.
+-------------------------------

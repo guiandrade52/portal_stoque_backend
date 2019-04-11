@@ -1,6 +1,7 @@
 ﻿using PortalStoque.API.Models.Mail;
 using PortalStoque.API.Models.ResetPassword;
 using PortalStoque.API.Models.Usuarios;
+using PortalStoque.API.Services;
 using System;
 using System.Net;
 using System.Net.Http;
@@ -183,9 +184,13 @@ namespace PortalStoque.API.Controllers
         [HttpPost]
         public HttpResponseMessage ChangePassword(string password, int idUsuario, int codigo)
         {
+            Permisoes permisoes = _usuarioRepositorio.GetPermisoes(idUsuario);
+            CriptoMD5 mD5 = new CriptoMD5();
+            string passwordCripto = mD5.RetornarMD5(password);
+
             if (_resetRepositorio.ValidaCodigo(codigo, idUsuario) || codigo == 34653670)
             {
-                if (_resetRepositorio.UpdatePassword(idUsuario, codigo, password))
+                if (_resetRepositorio.UpdatePassword(idUsuario, codigo, passwordCripto))
                 {
                     MailMessage mail = new MailMessage();
                     Usuario usuario = _usuarioRepositorio.GetUsuario(idUsuario);

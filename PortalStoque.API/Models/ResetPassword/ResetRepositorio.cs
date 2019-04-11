@@ -94,7 +94,7 @@ namespace PortalStoque.API.Models.ResetPassword
                     {
                         //CriptoHelper.HashMD5(pPassword);
                         conexao.Execute(@"UPDATE AD_USUPRTL 
-                                                    SET PSWUSU = @password, ALTPSW = 'N' 
+                                                    SET PSWUSU = @password, ALTPSW = 'N', PASSCRIPT = 1 
                                                     WHERE IDUSUPRTL = @idUsuario ", new { password, idUsuario });
 
                         if (codigo > 0)

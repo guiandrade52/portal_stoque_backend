@@ -18,14 +18,14 @@ namespace PortalStoque.API.Models.Usuarios
                 {
                     if (!string.IsNullOrWhiteSpace(login.UserName) && !string.IsNullOrWhiteSpace(login.Password))
                     {
-                        //CriptoHelper.HashMD5(pPassword);
                         login.UserName.ToLower();
 
                         return conexao.Query<Login>
                             (@"SELECT 
 	                            PRTL.IDUSUPRTL AS IdUsuario,
 	                            CTT.NOMECONTATO AS Nome,
-	                            PRTL.LGNUSU AS UserName
+	                            PRTL.LGNUSU AS UserName,
+                                PRTL.ATIVO
 	                            FROM AD_USUPRTL PRTL
 	                            INNER JOIN TGFCTT CTT WITH(NOLOCK) ON CTT.CODCONTATO = PRTL.CODCONTATO AND CTT.CODPARC = PRTL.CODPARC
                                 WHERE PRTL.LGNUSU = @UserName AND PRTL.PSWUSU = @Password", new { login.UserName, login.Password }).FirstOrDefault();
@@ -50,6 +50,7 @@ namespace PortalStoque.API.Models.Usuarios
                     return conexao.Query<Usuario>
                             (@"SELECT 
 	                            PRTL.IDUSUPRTL AS IdUsuario,
+                                PRTL.CODPARC AS CodParc,
 	                            CTT.NOMECONTATO AS Nome,
 	                            PRTL.LGNUSU AS UserName,
 	                            CTT.EMAIL AS Email,
@@ -76,6 +77,7 @@ namespace PortalStoque.API.Models.Usuarios
                     return conexao.Query<Permisoes>
                         (@"SELECT 
 	                        PRTL.IDUSUPRTL as IdUsuario,
+                            PRTL.PASSCRIPT AS PassCript,
 	                        PRTL.CLIENTEINTERNO as ClienteInterno,
 	                        PRTL.ALTPSW AS AltPassword,
 	                        PRTL.PRFLUSU AS Perfil,
@@ -130,6 +132,32 @@ namespace PortalStoque.API.Models.Usuarios
 	                               CODPARCAB AS CodParcAb,
 	                               NUMCONTRATO AS Contrato
 	                            FROM AD_USUPRTLCON WHERE IDUSUPRTL = @idUsuario", new { idUsuario }).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.writeLog(ex.Message);
+                throw ex;
+            }
+        }
+
+        public bool UpdateData(Usuario usuario)
+        {
+            try
+            {
+                using (var conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["principal"].ConnectionString))
+                {
+
+                    var result = conexao.Execute
+                         (@"UPDATE TGFCTT 
+                                SET NOMECONTATO = @Nome, 
+                                TELEFONE = @Telefone, 
+                                EMAIL = @Email 
+                            WHERE CODCONTATO = @CodContato
+                            AND CODPARC = @CodParc", new { usuario.Nome, usuario.Telefone, usuario.Email, usuario.CodContato, usuario.CodParc });
+                    if (result > 0)
+                        return true;
+                    return false;
                 }
             }
             catch (Exception ex)

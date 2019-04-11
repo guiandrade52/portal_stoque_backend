@@ -9,5 +9,6 @@
         public char RgtOcorrencia { get; set; }
         public string Perfil { get; set; }
         public char ClienteInterno { get; set; }
+        public int PassCript { get; set; }
     }
 }

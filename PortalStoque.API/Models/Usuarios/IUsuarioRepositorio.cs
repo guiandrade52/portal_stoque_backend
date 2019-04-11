@@ -12,5 +12,6 @@ namespace PortalStoque.API.Models.Usuarios
         Login Login(Login login);
         IEnumerable<Usuario> GetAll(string filter);
         IEnumerable<ParcConConfigs> GetParcCon(int idUsuario);
+        bool UpdateData(Usuario usuario);
     }
 }
