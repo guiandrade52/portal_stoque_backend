@@ -24,7 +24,7 @@
       <Value Profile="(Default)">P0rt@1$t0qu3</Value>
     </Setting>
     <Setting Name="SmtpTo" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">fagner.gomes@stoque.com.br</Value>
+      <Value Profile="(Default)">helpdesk@stoque.com.br</Value>
     </Setting>
   </Settings>
 </SettingsFile>

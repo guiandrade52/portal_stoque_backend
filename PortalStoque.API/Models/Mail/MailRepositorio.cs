@@ -14,8 +14,7 @@ namespace PortalStoque.API.Models.Mail
                 smtp.Host = Properties.Settings.Default.SmtpHost;
                 smtp.Port = Properties.Settings.Default.SmtpPorta;
                 smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new System.Net.NetworkCredential
-                (Properties.Settings.Default.SmtpFrom, Properties.Settings.Default.SmtpPassword);// Login e senha do e-mail.
+                smtp.Credentials = new System.Net.NetworkCredential(Properties.Settings.Default.SmtpFrom, Properties.Settings.Default.SmtpPassword);// Login e senha do e-mail.
                 smtp.EnableSsl = true;
                 smtp.Send(mail);
                 return true;
@@ -23,7 +22,7 @@ namespace PortalStoque.API.Models.Mail
             catch (Exception ex)
             {
                 Logger.writeLog(ex.Message);
-                throw ex;
+                return false;
             }
         }
     }

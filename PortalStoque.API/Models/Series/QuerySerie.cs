@@ -9,7 +9,7 @@ namespace PortalStoque.API.Models.Series
             string _where = "WHERE EQP.CONTROLE IS NOT NULL AND EQP.SITUACAO = 'A'";
             if (!string.IsNullOrEmpty(search))
             {
-                _where = string.Format("{0} AND EQP.CONTROLE LIKE '{1}%' ", _where, search);
+                _where = string.Format("{0} AND SERIE.CONTROLEFAB LIKE '{1}%' OR EQP.CONTROLE LIKE'{1}%'", _where, search);
             }
 
             if (permisao.Perfil == "C" || permisao.Perfil == "CO")

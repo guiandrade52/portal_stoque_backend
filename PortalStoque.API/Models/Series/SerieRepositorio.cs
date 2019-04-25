@@ -12,12 +12,14 @@ namespace PortalStoque.API.Models.Series
     {
         public IEnumerable<Serie> GetAll(string filter)
         {
-            string query = string.Format(@"SELECT TOP 100			 
-		                                    EQP.CONTROLE AS Controle,
-		                                    PRO.DESCRPROD AS DescrProd
-	                                    FROM TGFPRO PRO
-	                                    INNER JOIN TGFGRU GRU WITH(NOLOCK) ON GRU.CODGRUPOPROD = PRO.CODGRUPOPROD
-	                                    INNER JOIN BH_FTLEQP EQP WITH(NOLOCK) ON EQP.CODPROD = PRO.CODPROD
+            string query = string.Format(@"	SELECT TOP 100
+                                                SERIE.CONTROLE AS Controle,
+		                                        SERIE.CONTROLEFAB AS ControleFab,
+		                                        PROD.DESCRPROD AS DescrProd
+	                                        FROM BH_FTLEQP EQP
+		                                        LEFT JOIN BH_FTLSER SERIE ON SERIE.CONTROLE = EQP.CONTROLE
+		                                        INNER JOIN TGFPRO PROD ON PROD.CODPROD = EQP.CODPROD
+		                                        INNER JOIN TCSCON CON ON CON.NUMCONTRATO = EQP.NUMCONTRATO
                                         {0}", filter);
 
             try
@@ -46,11 +48,12 @@ namespace PortalStoque.API.Models.Series
                                                 EQP.CODPARC AS CodParcAtendido,
 		                                        PAREQP.RAZAOSOCIAL AS NomeParcAtendido
 	                                        FROM BH_FTLEQP EQP WITH (NOLOCK)
+                                            LEFT JOIN BH_FTLSER SERIE ON SERIE.CONTROLE = EQP.CONTROLE
 	                                        INNER JOIN TCSCON CON  WITH (NOLOCK) ON EQP.NUMCONTRATO = CON.NUMCONTRATO
 	                                        INNER JOIN TGFPAR PAR WITH (NOLOCK) ON PAR.CODPARC = CON.CODPARC
                                             INNER JOIN TGFPAR PAREQP WITH (NOLOCK) ON PAREQP.CODPARC=EQP.CODPARC
 	                                        INNER JOIN TGFPRO PRO WITH(NOLOCK) ON PRO.CODPROD = EQP.CODPROD 
-                                            WHERE EQP.CONTROLE LIKE '{0}%'", serie);
+                                            WHERE SERIE.CONTROLEFAB LIKE '{0}%'", serie);
 
             try
             {
@@ -77,7 +80,7 @@ namespace PortalStoque.API.Models.Series
 			                                    SERIE.CONTROLEFAB AS ControleFab,			
 			                                    PROD.DESCRPROD AS DescrProd,			
 			                                    NAT.DESCRNAT AS DescrNat,
-			                                    ENDE.TIPO +' '+ ENDE.NOMEEND AS Endereco,
+			                                    (SELECT ISNULL(ENDE.TIPO, '') +' '+ ENDE.NOMEEND) AS Endereco,
 		                                        EQP.NUMEND AS Numero,
 			                                    BAI.NOMEBAI AS Bairro,
 			                                    CID.NOMECID AS Cidade,
@@ -102,13 +105,14 @@ namespace PortalStoque.API.Models.Series
 			                                    LEFT JOIN TGFPAR PAR ON EQP.CODPARC = PAR.CODPARC
 
 			                                    WHERE 1 = 1
-			                                    AND EQP.CONTROLE = '{0}'", serie);
+			                                    AND SERIE.CONTROLEFAB = '{0}'
+                                                OR SERIE.CONTROLE = '{0}'", serie);
 
             try
             {
                 using (var _Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["principal"].ConnectionString))
                 {
-                    return _Conexao.Query<SerieDetails>(query).First();
+                    return _Conexao.Query<SerieDetails>(query).FirstOrDefault();
                 }
             }
             catch (Exception ex)

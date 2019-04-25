@@ -88,7 +88,7 @@ namespace PortalStoque.API.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("fagner.gomes@stoque.com.br")]
+        [global::System.Configuration.DefaultSettingValueAttribute("helpdesk@stoque.com.br")]
         public string SmtpTo {
             get {
                 return ((string)(this["SmtpTo"]));

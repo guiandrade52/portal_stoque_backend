@@ -149,8 +149,8 @@
     <Compile Include="Models\Charts\ChartsRepositorio.cs" />
     <Compile Include="Models\Charts\IChartsRepositorio.cs" />
     <Compile Include="Models\Contratos\CadContrato.cs" />
-    <Compile Include="Models\Formularios\NovoColaborador.cs" />
     <Compile Include="Models\Mail\IMailRepositorio.cs" />
+    <Compile Include="Models\Mail\Mail.cs" />
     <Compile Include="Models\Mail\MailRepositorio.cs" />
     <Compile Include="Models\Parceiros\ParceiroContrato.cs" />
     <Compile Include="Models\Relatorios\IRelatorioRepositorio.cs" />
@@ -163,7 +163,6 @@
     <Compile Include="Models\SolucaoProposta\ISolucaoRepositorio.cs" />
     <Compile Include="Models\SolucaoProposta\Solucao.cs" />
     <Compile Include="Models\SolucaoProposta\SolucaoRepositorio.cs" />
-    <Compile Include="Models\Formularios\CadastroDeUsuario.cs" />
     <Compile Include="Models\Usuarios\ParcConConfigs.cs" />
     <Compile Include="Services\Logger.cs" />
     <Compile Include="Controllers\services\UsuarioCorrent.cs" />
