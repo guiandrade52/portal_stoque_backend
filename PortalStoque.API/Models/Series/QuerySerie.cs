@@ -28,7 +28,7 @@ namespace PortalStoque.API.Models.Series
                                     AND EQP.SITUACAO = 'A'
                                     AND EQP.NUMCONTRATO = {0}
                                     AND GRU.CODGRUPOPROD = {1}
-                                    AND PRO.CODPROD = {2}", contrato, codGrupo, codProd);           
+                                    AND PROD.CODPROD = {2}", contrato, codGrupo, codProd);           
         }
     }
 }

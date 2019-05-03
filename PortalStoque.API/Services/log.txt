@@ -293,3 +293,79 @@ Log Entry : 15:11:13 quinta-feira, 25 de abril de 2019
   :
   :Dados no nível raiz inválidos. Linha 1, posição 1.
 -------------------------------
+
+Log Entry : 16:11:40 quinta-feira, 25 de abril de 2019
+  :
+  :The multi-part identifier "GRU.CODGRUPOPROD" could not be bound.
+The multi-part identifier "PRO.CODPROD" could not be bound.
+-------------------------------
+
+Log Entry : 16:18:26 quinta-feira, 25 de abril de 2019
+  :
+  :The correlation name 'CON' is specified multiple times in a FROM clause.
+-------------------------------
+
+Log Entry : 16:19:10 quinta-feira, 25 de abril de 2019
+  :
+  :The correlation name 'CON' is specified multiple times in a FROM clause.
+-------------------------------
+
+Log Entry : 16:21:16 quinta-feira, 25 de abril de 2019
+  :
+  :Dados no nível raiz inválidos. Linha 1, posição 1.
+-------------------------------
+
+Log Entry : 16:55:55 quinta-feira, 25 de abril de 2019
+  :
+  :Dados no nível raiz inválidos. Linha 1, posição 1.
+-------------------------------
+
+Log Entry : 17:51:11 quinta-feira, 2 de maio de 2019
+  :
+  :Dados no nível raiz inválidos. Linha 1, posição 1.
+-------------------------------
+
+Log Entry : 18:01:57 quinta-feira, 2 de maio de 2019
+  :
+  :Dados no nível raiz inválidos. Linha 1, posição 1.
+-------------------------------
+
+Log Entry : 10:09:11 sexta-feira, 3 de maio de 2019
+  :
+  :Dados no nível raiz inválidos. Linha 1, posição 1.
+-------------------------------
+
+Log Entry : 10:50:47 sexta-feira, 3 de maio de 2019
+  :
+  :Dados no nível raiz inválidos. Linha 1, posição 1.
+-------------------------------
+
+Log Entry : 12:02:06 sexta-feira, 3 de maio de 2019
+  :
+  :Dados no nível raiz inválidos. Linha 1, posição 1.
+-------------------------------
+
+Log Entry : 12:20:06 sexta-feira, 3 de maio de 2019
+  :
+  :Dados no nível raiz inválidos. Linha 1, posição 1.
+-------------------------------
+
+Log Entry : 12:21:22 sexta-feira, 3 de maio de 2019
+  :
+  :Dados no nível raiz inválidos. Linha 1, posição 1.
+-------------------------------
+
+Log Entry : 12:24:00 sexta-feira, 3 de maio de 2019
+  :
+  :Dados no nível raiz inválidos. Linha 1, posição 1.
+-------------------------------
+
+Log Entry : 12:28:12 sexta-feira, 3 de maio de 2019
+  :
+  :Dados no nível raiz inválidos. Linha 1, posição 1.
+-------------------------------
+
+Log Entry : 12:30:10 sexta-feira, 3 de maio de 2019
+  :
+  :Dados no nível raiz inválidos. Linha 1, posição 1.
+-------------------------------

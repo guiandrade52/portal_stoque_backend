@@ -1,14 +1,10 @@
 ﻿using PortalStoque.API.Models.Usuarios;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace PortalStoque.API.Models.Servicos
 {
     public class QueryServico
     {
-        public static string GetFilter(Permisoes permisao)
+        public static string GetFilter(string contrato, Permisoes permisao)
         {
 
             string _where = @"SELECT
@@ -17,7 +13,7 @@ namespace PortalStoque.API.Models.Servicos
                                 FROM TGFPRO
                                 WHERE CODGRUPOPROD = 20400";
 
-            
+
 
             if (permisao.Perfil == "C" || permisao.Perfil == "CO")
             {
@@ -27,10 +23,20 @@ namespace PortalStoque.API.Models.Servicos
 	                                            PRO.DESCRPROD AS Nome
                                              FROM AD_STOSRVCONT CONT
                                              INNER JOIN TGFPRO PRO ON CONT.CODPROD = PRO.CODPROD
-                                            WHERE CONT.NUMCONTRATO IN({0})", permisao.Contratos);
+                                            WHERE CONT.NUMCONTRATO IN({0})", contrato);
             }
 
             return _where;
+        }
+
+        public static string GetFilterPContrato(string contrato)
+        {
+            return string.Format(@"SELECT DISTINCT  
+	                                    PRO.CODPROD AS CodServico,
+	                                    PRO.DESCRPROD AS Nome
+                                        FROM AD_STOSRVCONT CONT
+                                        INNER JOIN TGFPRO PRO ON CONT.CODPROD = PRO.CODPROD
+                                    WHERE CONT.NUMCONTRATO IN({0})", contrato);
         }
     }
 }

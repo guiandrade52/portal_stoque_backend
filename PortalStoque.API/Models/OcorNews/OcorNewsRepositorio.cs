@@ -134,7 +134,7 @@ namespace PortalStoque.API.Models.OcorNews
            Ocor.CodCidade, //{11}
            Ocor.Complemento, //{12}
            "1", //{13}
-           "",  //{14}
+           Ocor.CodServico,  //{14}
            "",  //{15}
             Ocor.CodProduto,  //{16}
            "277",  //{17}

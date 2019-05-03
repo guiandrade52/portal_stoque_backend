@@ -19,7 +19,8 @@ namespace PortalStoque.API.Models.Series
 	                                        FROM BH_FTLEQP EQP
 		                                        LEFT JOIN BH_FTLSER SERIE ON SERIE.CONTROLE = EQP.CONTROLE
 		                                        INNER JOIN TGFPRO PROD ON PROD.CODPROD = EQP.CODPROD
-		                                        INNER JOIN TCSCON CON ON CON.NUMCONTRATO = EQP.NUMCONTRATO
+                                                INNER JOIN TCSCON CON ON CON.NUMCONTRATO = EQP.NUMCONTRATO
+												INNER JOIN TGFGRU GRU WITH(NOLOCK) ON GRU.CODGRUPOPROD = PROD.CODGRUPOPROD
                                         {0}", filter);
 
             try

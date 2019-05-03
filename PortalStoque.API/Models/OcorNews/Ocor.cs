@@ -22,6 +22,8 @@ namespace PortalStoque.API.Models.OcorNews
         public string Descricao{ get; set; }
         public int IdUsuarioPortal { get; set; }
         public string ProcessoRel { get; set; }
+        public string Grupo { get; set; }
+        public string CodServico { get; set; }
 
 
         private static SWServiceInvokerJson instance;
