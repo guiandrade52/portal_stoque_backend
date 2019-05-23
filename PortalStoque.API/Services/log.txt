@@ -369,3 +369,43 @@ Log Entry : 12:30:10 sexta-feira, 3 de maio de 2019
   :
   :Dados no nível raiz inválidos. Linha 1, posição 1.
 -------------------------------
+
+Log Entry : 11:32:41 quarta-feira, 22 de maio de 2019
+  :
+  :Dados no nível raiz inválidos. Linha 1, posição 1.
+-------------------------------
+
+Log Entry : 12:07:21 quinta-feira, 23 de maio de 2019
+  :
+  :Dados no nível raiz inválidos. Linha 1, posição 1.
+-------------------------------
+
+Log Entry : 12:09:56 quinta-feira, 23 de maio de 2019
+  :
+  :Dados no nível raiz inválidos. Linha 1, posição 1.
+-------------------------------
+
+Log Entry : 12:15:54 quinta-feira, 23 de maio de 2019
+  :
+  :Dados no nível raiz inválidos. Linha 1, posição 1.
+-------------------------------
+
+Log Entry : 12:19:22 quinta-feira, 23 de maio de 2019
+  :
+  :Dados no nível raiz inválidos. Linha 1, posição 1.
+-------------------------------
+
+Log Entry : 12:21:06 quinta-feira, 23 de maio de 2019
+  :
+  :Dados no nível raiz inválidos. Linha 1, posição 1.
+-------------------------------
+
+Log Entry : 12:22:48 quinta-feira, 23 de maio de 2019
+  :
+  :Dados no nível raiz inválidos. Linha 1, posição 1.
+-------------------------------
+
+Log Entry : 12:23:25 quinta-feira, 23 de maio de 2019
+  :
+  :Dados no nível raiz inválidos. Linha 1, posição 1.
+-------------------------------

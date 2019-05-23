@@ -82,7 +82,8 @@ namespace PortalStoque.API.Models.OcorNews
                                  'IdentificacaoCargaHoraria.DESCRCARGAHOR',
                                  'IDUSUPRTL',
                                  'USUPRTL.NOMEUSU',
-                                 'EXECUTIONIDREL'
+                                 'EXECUTIONIDREL',
+                                 'CHAMADOTER'
                               ],
                               'records':[
                                  {{  
@@ -114,7 +115,8 @@ namespace PortalStoque.API.Models.OcorNews
                                        '50':'text',
                                         [7]
                                        '66':'{19}',
-                                       '68':'{20}' 
+                                       '68':'{20}',
+                                       '69':'{21}'
                                     }}
                                   }}
                               ]                    
@@ -140,7 +142,8 @@ namespace PortalStoque.API.Models.OcorNews
            "277",  //{17}
            "I",  //{18}
            Ocor.IdUsuarioPortal,
-           Ocor.ProcessoRel
+           Ocor.ProcessoRel,
+           Ocor.OcorTerceiro
            );
 
 
