@@ -409,3 +409,223 @@ Log Entry : 12:23:25 quinta-feira, 23 de maio de 2019
   :
   :Dados no nível raiz inválidos. Linha 1, posição 1.
 -------------------------------
+
+Log Entry : 11:20:56 segunda-feira, 27 de maio de 2019
+  :
+  :Error parsing column 2 (Empresa=<null>)
+-------------------------------
+
+Log Entry : 11:20:56 segunda-feira, 27 de maio de 2019
+  :
+  :Error parsing column 2 (Empresa=<null>)
+-------------------------------
+
+Log Entry : 12:22:06 segunda-feira, 27 de maio de 2019
+  :
+  :Dados no nível raiz inválidos. Linha 1, posição 1.
+-------------------------------
+
+Log Entry : 13:13:41 segunda-feira, 27 de maio de 2019
+  :
+  :Conversion failed when converting the varchar value 'C4B84CCD80064B999094BFF4C2C50C28' to data type int.
+-------------------------------
+
+Log Entry : 13:13:42 segunda-feira, 27 de maio de 2019
+  :
+  :Conversion failed when converting the varchar value 'C4B84CCD80064B999094BFF4C2C50C28' to data type int.
+-------------------------------
+
+Log Entry : 13:19:33 segunda-feira, 27 de maio de 2019
+  :
+  :Conversion failed when converting the varchar value 'C4B84CCD80064B999094BFF4C2C50C28' to data type int.
+-------------------------------
+
+Log Entry : 13:19:33 segunda-feira, 27 de maio de 2019
+  :
+  :Conversion failed when converting the varchar value 'C4B84CCD80064B999094BFF4C2C50C28' to data type int.
+-------------------------------
+
+Log Entry : 13:21:27 segunda-feira, 27 de maio de 2019
+  :
+  :Conversion failed when converting the varchar value 'C4B84CCD80064B999094BFF4C2C50C28' to data type int.
+-------------------------------
+
+Log Entry : 13:21:27 segunda-feira, 27 de maio de 2019
+  :
+  :Conversion failed when converting the varchar value 'C4B84CCD80064B999094BFF4C2C50C28' to data type int.
+-------------------------------
+
+Log Entry : 13:22:37 segunda-feira, 27 de maio de 2019
+  :
+  :Conversion failed when converting the varchar value 'C4B84CCD80064B999094BFF4C2C50C28' to data type int.
+-------------------------------
+
+Log Entry : 13:22:37 segunda-feira, 27 de maio de 2019
+  :
+  :Conversion failed when converting the varchar value 'C4B84CCD80064B999094BFF4C2C50C28' to data type int.
+-------------------------------
+
+Log Entry : 13:26:43 segunda-feira, 27 de maio de 2019
+  :
+  :The conversion of a varchar data type to a datetime data type resulted in an out-of-range value.
+-------------------------------
+
+Log Entry : 13:27:57 segunda-feira, 27 de maio de 2019
+  :
+  :The conversion of a varchar data type to a datetime data type resulted in an out-of-range value.
+-------------------------------
+
+Log Entry : 14:56:23 segunda-feira, 27 de maio de 2019
+  :
+  :The conversion of a varchar data type to a datetime data type resulted in an out-of-range value.
+-------------------------------
+
+Log Entry : 14:59:32 segunda-feira, 27 de maio de 2019
+  :
+  :Incorrect syntax near '4/1/2019'.
+-------------------------------
+
+Log Entry : 15:10:37 segunda-feira, 27 de maio de 2019
+  :
+  :The conversion of a varchar data type to a datetime data type resulted in an out-of-range value.
+-------------------------------
+
+Log Entry : 15:18:26 segunda-feira, 27 de maio de 2019
+  :
+  :Dados no nível raiz inválidos. Linha 1, posição 1.
+-------------------------------
+
+Log Entry : 15:19:59 segunda-feira, 27 de maio de 2019
+  :
+  :The conversion of a varchar data type to a datetime data type resulted in an out-of-range value.
+-------------------------------
+
+Log Entry : 15:26:44 segunda-feira, 27 de maio de 2019
+  :
+  :Dados no nível raiz inválidos. Linha 1, posição 1.
+-------------------------------
+
+Log Entry : 15:45:27 segunda-feira, 27 de maio de 2019
+  :
+  :Explicit conversion from data type int to date is not allowed.
+-------------------------------
+
+Log Entry : 15:45:51 segunda-feira, 27 de maio de 2019
+  :
+  :Conversion failed when converting date and/or time from character string.
+-------------------------------
+
+Log Entry : 15:48:01 segunda-feira, 27 de maio de 2019
+  :
+  :Conversion failed when converting date and/or time from character string.
+-------------------------------
+
+Log Entry : 15:48:28 segunda-feira, 27 de maio de 2019
+  :
+  :Invalid column name 'F'.
+-------------------------------
+
+Log Entry : 15:48:41 segunda-feira, 27 de maio de 2019
+  :
+  :Invalid column name 'FA'.
+-------------------------------
+
+Log Entry : 15:48:50 segunda-feira, 27 de maio de 2019
+  :
+  :Invalid column name 'FAG'.
+-------------------------------
+
+Log Entry : 15:49:45 segunda-feira, 27 de maio de 2019
+  :
+  :Conversion failed when converting date and/or time from character string.
+-------------------------------
+
+Log Entry : 15:50:38 segunda-feira, 27 de maio de 2019
+  :
+  :Explicit conversion from data type int to date is not allowed.
+-------------------------------
+
+Log Entry : 15:55:28 segunda-feira, 27 de maio de 2019
+  :
+  :Explicit conversion from data type int to date is not allowed.
+-------------------------------
+
+Log Entry : 15:57:50 segunda-feira, 27 de maio de 2019
+  :
+  :Conversion failed when converting date and/or time from character string.
+-------------------------------
+
+Log Entry : 15:58:08 segunda-feira, 27 de maio de 2019
+  :
+  :The conversion of a varchar data type to a datetime data type resulted in an out-of-range value.
+-------------------------------
+
+Log Entry : 16:19:28 segunda-feira, 27 de maio de 2019
+  :
+  :The conversion of a varchar data type to a datetime data type resulted in an out-of-range value.
+-------------------------------
+
+Log Entry : 16:21:17 segunda-feira, 27 de maio de 2019
+  :
+  :Incorrect syntax near '4/1/2019\'.
+-------------------------------
+
+Log Entry : 16:22:06 segunda-feira, 27 de maio de 2019
+  :
+  :Incorrect syntax near '5/1/2019\'.
+-------------------------------
+
+Log Entry : 16:22:47 segunda-feira, 27 de maio de 2019
+  :
+  :Incorrect syntax near '5/1/2019'.
+-------------------------------
+
+Log Entry : 16:23:34 segunda-feira, 27 de maio de 2019
+  :
+  :The conversion of a varchar data type to a datetime data type resulted in an out-of-range value.
+-------------------------------
+
+Log Entry : 16:33:45 segunda-feira, 27 de maio de 2019
+  :
+  :The conversion of a varchar data type to a datetime data type resulted in an out-of-range value.
+-------------------------------
+
+Log Entry : 16:35:44 segunda-feira, 27 de maio de 2019
+  :
+  :The conversion of a varchar data type to a datetime data type resulted in an out-of-range value.
+-------------------------------
+
+Log Entry : 16:43:21 segunda-feira, 27 de maio de 2019
+  :
+  :The conversion of a varchar data type to a datetime data type resulted in an out-of-range value.
+-------------------------------
+
+Log Entry : 16:49:25 segunda-feira, 27 de maio de 2019
+  :
+  :The conversion of a varchar data type to a datetime data type resulted in an out-of-range value.
+-------------------------------
+
+Log Entry : 16:49:47 segunda-feira, 27 de maio de 2019
+  :
+  :The conversion of a varchar data type to a datetime data type resulted in an out-of-range value.
+-------------------------------
+
+Log Entry : 16:59:19 segunda-feira, 27 de maio de 2019
+  :
+  :The conversion of a varchar data type to a datetime data type resulted in an out-of-range value.
+-------------------------------
+
+Log Entry : 17:06:37 segunda-feira, 27 de maio de 2019
+  :
+  :The conversion of a varchar data type to a datetime data type resulted in an out-of-range value.
+-------------------------------
+
+Log Entry : 17:57:42 segunda-feira, 27 de maio de 2019
+  :
+  :The conversion of a varchar data type to a datetime data type resulted in an out-of-range value.
+-------------------------------
+
+Log Entry : 17:58:19 segunda-feira, 27 de maio de 2019
+  :
+  :The conversion of a varchar data type to a datetime data type resulted in an out-of-range value.
+-------------------------------

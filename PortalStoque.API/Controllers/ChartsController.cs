@@ -40,14 +40,17 @@ namespace PortalStoque.API.Controllers
             for (int i = 0; i < 12; i++)
             {
                 dtinicial = new DateTime(dtinicial.Year, dtinicial.Month, 1).AddMonths(-1);
+                if(i == 0)
+                    dtinicial = new DateTime(dtinicial.Year, dtinicial.Month, 1).AddMonths(+1);
+
                 DateTime dtfinal = dtinicial.Month != 12
                     ? new DateTime(dtinicial.Year, dtinicial.Month + 1, 1).AddDays(-1)
                     : new DateTime(dtinicial.Year + 1, dtinicial.Month - 11, 1).AddDays(-1);
 
                 Charts chart = new Charts
                 {
-                    DtInicio = string.Format("{0}/{1}/{2}", dtinicial.Month, dtinicial.Day, dtinicial.Year),
-                    DtFinal = string.Format("{0}/{1}/{2}", dtfinal.Month, dtfinal.Day, dtfinal.Year),
+                    DtInicio = string.Format("{0}/{1}/{2}", dtinicial.Day, dtinicial.Month, dtinicial.Year),
+                    DtFinal = string.Format("{0}/{1}/{2}", dtfinal.Day, dtfinal.Month, dtfinal.Year),
                     CodContato = user.CodContato,
                     Contratos = permisoes.Contratos
                 };

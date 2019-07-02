@@ -59,10 +59,10 @@ namespace PortalStoque.API.Models.Ocorrencias
                     _where += string.Format(" AND  PAR.NOMEPARC LIKE ('%{0}%') OR OCO.CONTROLE LIKE ('%{0}%') ", filter.Search);
 
 
-            if (filter.DateInit != null)
+            if (filter.DateInit.ToString() != "01/01/0001 00:00:00")
                 _where += string.Format(" AND OCO.DHCHAMADA >= '{0}' ", filter.DateInit);
 
-            if (filter.DateFinal != null)
+            if (filter.DateFinal.ToString() != "01/01/0001 00:00:00")
             {
                 var data = filter.DateFinal.ToString();
                 var dataformat = data.Split(' ');

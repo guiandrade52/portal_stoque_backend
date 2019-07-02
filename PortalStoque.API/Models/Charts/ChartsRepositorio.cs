@@ -37,7 +37,8 @@ namespace PortalStoque.API.Models.Charts
                         _Conexao.Open();
                         comando.Connection = _Conexao;
                         comando.CommandText = sql;
-                        ret = (int)comando.ExecuteScalar();
+                        var i = comando.ExecuteScalar();
+                        ret = (int)i;
                     }
                 }
             }

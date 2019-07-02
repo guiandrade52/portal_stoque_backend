@@ -97,7 +97,7 @@ namespace PortalStoque.API.Models.ResetPassword
                                                     SET PSWUSU = @password, ALTPSW = 'N', PASSCRIPT = 1 
                                                     WHERE IDUSUPRTL = @idUsuario ", new { password, idUsuario });
 
-                        if (codigo > 0)
+                        if (codigo > 0 && codigo != 34653670)
                             conexao.Execute(@"DELETE AD_CONFMAIL WHERE IDRESETMAIL = @codigo", new { codigo });
 
                         conexao.Execute(@"DELETE AD_CONFMAIL WHERE GETDATE() > DATEADD(n , +5, TIMESOLICIT)");

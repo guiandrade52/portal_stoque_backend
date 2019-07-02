@@ -1,10 +1,12 @@
-﻿namespace PortalStoque.API.Models.Ocorrencias
+﻿using System;
+
+namespace PortalStoque.API.Models.Ocorrencias
 {
     public class Filter
     {
         public string Search { get; set; }
-        public string DateInit { get; set; }
-        public string DateFinal { get; set; }
+        public DateTime DateInit { get; set; }
+        public DateTime DateFinal { get; set; }
         public string Contrato{ get; set; }
         public string Contato { get; set; }
         public string Serie { get; set; }
