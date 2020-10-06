@@ -111,7 +111,7 @@ namespace PortalStoque.API.Models.OcorNews
                                        '43':'{15}',
                                        '45':'{16}',
                                        '47':'U',
-                                       '48':'N',
+                                       '48':'{22}',
                                        '50':'text',
                                         [7]
                                        '66':'{19}',
@@ -141,9 +141,10 @@ namespace PortalStoque.API.Models.OcorNews
             Ocor.CodProduto,  //{16}
            "277",  //{17}
            "I",  //{18}
-           Ocor.IdUsuarioPortal,
-           Ocor.ProcessoRel,
-           Ocor.OcorTerceiro
+           Ocor.IdUsuarioPortal,//{19}
+           Ocor.ProcessoRel,//{20}
+           Ocor.OcorTerceiro,//{21}
+           Ocor.Severidade//{22}
            );
 
 

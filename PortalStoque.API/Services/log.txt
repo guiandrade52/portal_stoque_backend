@@ -693,3 +693,113 @@ Log Entry : 18:41:37 terça-feira, 29 de setembro de 2020
   :
   :Dados no nível raiz inválidos. Linha 1, posição 1.
 -------------------------------
+
+Log Entry : 18:54:30 terça-feira, 29 de setembro de 2020
+  :
+  :Tempo Limite de Conexão Expirado. O tempo limite decorrido durante a tentativa de consumo da confirmação de handshake pré-logon. Isso ocorre porque houve falha no handshake pré-logon ou o servidor não pôde responder a tempo.  A duração da tentativa de conexão com este servidor foi: [Pre-Login] initialization=266; handshake=14944; 
+-------------------------------
+
+Log Entry : 19:02:21 terça-feira, 29 de setembro de 2020
+  :
+  :O servidor SMTP requer uma conexão segura ou o cliente não foi autenticado. A resposta do servidor foi: 5.7.57 SMTP; Client was not authenticated to send anonymous mail during MAIL FROM [CP2PR80CA0178.lamprd80.prod.outlook.com]
+-------------------------------
+
+Log Entry : 19:08:49 terça-feira, 29 de setembro de 2020
+  :
+  :Error parsing column 3 (AltPassword=<null>)
+-------------------------------
+
+Log Entry : 19:10:19 terça-feira, 29 de setembro de 2020
+  :
+  :Error parsing column 3 (AltPassword=<null>)
+-------------------------------
+
+Log Entry : 19:10:45 terça-feira, 29 de setembro de 2020
+  :
+  :O servidor SMTP requer uma conexão segura ou o cliente não foi autenticado. A resposta do servidor foi: 5.7.57 SMTP; Client was not authenticated to send anonymous mail during MAIL FROM [CP2PR80CA0135.lamprd80.prod.outlook.com]
+-------------------------------
+
+Log Entry : 09:24:50 quarta-feira, 30 de setembro de 2020
+  :
+  :Conversion failed when converting the varchar value 'F32681AB3F444E1B810CC2CDB0D4A3B8' to data type int.
+-------------------------------
+
+Log Entry : 09:25:37 quarta-feira, 30 de setembro de 2020
+  :
+  :Conversion failed when converting the varchar value 'F32681AB3F444E1B810CC2CDB0D4A3B8' to data type int.
+-------------------------------
+
+Log Entry : 09:26:00 quarta-feira, 30 de setembro de 2020
+  :
+  :Conversion failed when converting the varchar value 'F32681AB3F444E1B810CC2CDB0D4A3B8' to data type int.
+-------------------------------
+
+Log Entry : 09:28:03 quarta-feira, 30 de setembro de 2020
+  :
+  :Conversion failed when converting the varchar value 'F32681AB3F444E1B810CC2CDB0D4A3B8' to data type int.
+-------------------------------
+
+Log Entry : 09:34:12 quarta-feira, 30 de setembro de 2020
+  :
+  :Conversion failed when converting the varchar value 'F32681AB3F444E1B810CC2CDB0D4A3B8' to data type int.
+-------------------------------
+
+Log Entry : 09:37:36 quarta-feira, 30 de setembro de 2020
+  :
+  :Conversion failed when converting the varchar value 'F32681AB3F444E1B810CC2CDB0D4A3B8' to data type int.
+-------------------------------
+
+Log Entry : 09:37:46 quarta-feira, 30 de setembro de 2020
+  :
+  :Conversion failed when converting the varchar value 'F32681AB3F444E1B810CC2CDB0D4A3B8' to data type int.
+-------------------------------
+
+Log Entry : 09:17:02 quinta-feira, 1 de outubro de 2020
+  :
+  :Erro de rede ou específico à instância ao estabelecer conexão com o SQL Server. O servidor não foi encontrado ou não estava acessível. Verifique se o nome da instância está correto e se o SQL Server está configurado para permitir conexões remotas. (provider: SQL Network Interfaces, error: 26 - Erro ao Localizar Servidor/Instância Especificada)
+-------------------------------
+
+Log Entry : 16:23:22 quinta-feira, 1 de outubro de 2020
+  :
+  :Dados no nível raiz inválidos. Linha 1, posição 1.
+-------------------------------
+
+Log Entry : 16:46:47 quinta-feira, 1 de outubro de 2020
+  :
+  :Dados no nível raiz inválidos. Linha 1, posição 1.
+-------------------------------
+
+Log Entry : 16:51:11 quinta-feira, 1 de outubro de 2020
+  :
+  :Dados no nível raiz inválidos. Linha 1, posição 1.
+-------------------------------
+
+Log Entry : 17:12:14 quinta-feira, 1 de outubro de 2020
+  :
+  :Dados no nível raiz inválidos. Linha 1, posição 1.
+-------------------------------
+
+Log Entry : 11:08:29 sexta-feira, 2 de outubro de 2020
+  :
+  :Dados no nível raiz inválidos. Linha 1, posição 1.
+-------------------------------
+
+Log Entry : 11:17:20 sexta-feira, 2 de outubro de 2020
+  :
+  :Dados no nível raiz inválidos. Linha 1, posição 1.
+-------------------------------
+
+Log Entry : 11:19:47 sexta-feira, 2 de outubro de 2020
+  :
+  :Dados no nível raiz inválidos. Linha 1, posição 1.
+-------------------------------
+
+Log Entry : 11:55:18 sexta-feira, 2 de outubro de 2020
+  :
+  :Dados no nível raiz inválidos. Linha 1, posição 1.
+-------------------------------
+
+Log Entry : 12:10:46 sexta-feira, 2 de outubro de 2020
+  :
+  :Dados no nível raiz inválidos. Linha 1, posição 1.
+-------------------------------
