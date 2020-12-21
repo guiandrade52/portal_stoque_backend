@@ -1,0 +1,14 @@
+version: "3.7"
+services:
+  node:
+    image: registry.gitlab.com/$CI_PROJECT_PATH:$CI_COMMIT_REF_NAME
+    build: .
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_PORT=3001
+      - NODE_HOST=0.0.0.0
+      - API_BASE_PATH=/api
+      - EXTRATO_FOLDER=/extratos
+    volumes: 
+      - "/mnt/dados/extrato-upload:/extratos"

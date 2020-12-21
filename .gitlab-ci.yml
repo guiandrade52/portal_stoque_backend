@@ -1,0 +1,17 @@
+stages:
+  - build
+  
+before_script:
+  - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
+
+build_job:
+  stage: build
+  script:
+    - docker-compose build
+    - docker-compose push
+    
+  only:
+    - tags
+    
+  tags:
+    - sandman-stoque-runner 
